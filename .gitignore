@@ -35,11 +35,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-*.xml
-!pom.xml
-*.iml
-HELP.md
-.mvn/
 
-mvnw
-mvnw.cmd
+
+
