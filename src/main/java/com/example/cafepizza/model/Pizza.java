@@ -1,21 +1,27 @@
 package com.example.cafepizza.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@Getter
-@Setter
+import java.util.List;
+
+@Entity
+@Data
+@Table(name = "pizza")
 public class Pizza {
-    private String id;
-//    private Cafe;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+
     private String name;
     private Character size;
     private String key_ingredients;
     private double price;
 
-//    @Id
-    public Pizza(String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @ManyToOne
+    @JoinColumn(name = "cafe_id")
+    Cafe cafe;
 }

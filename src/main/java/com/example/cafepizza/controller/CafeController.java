@@ -1,13 +1,13 @@
-package com.example.cafepizza.controllers;
+package com.example.cafepizza.controller;
 
 import com.example.cafepizza.dao.CafeDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class CafeController {
     private final CafeDAO cafeDAO;
 
@@ -22,11 +22,11 @@ public class CafeController {
         return "CafeIndex";
     }
 
-    @GetMapping("/cafes/{id}")
-    public String findId(@RequestParam("id") int id, Model model) {
-        model.addAttribute("cafes", cafeDAO.cafeId(id));
-        return "CafeFindId";
-    }
+//    @GetMapping("/cafes/{id}")
+//    public String findId(@RequestParam("id") int id, Model model) {
+//        model.addAttribute("cafes", cafeDAO.cafeId(id));
+//        return "CafeFindId";
+//    }
 
 
 }

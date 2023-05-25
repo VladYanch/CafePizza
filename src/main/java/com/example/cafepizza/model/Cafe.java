@@ -1,17 +1,22 @@
 package com.example.cafepizza.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Time;
+import java.util.List;
 
-//@Entity
-@Getter
-@Setter
+@Entity
+@Data
+@Table(name = "cafe")
 public class Cafe {
 
-//    private String id;
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String name;
     private String city;
     private String address;
@@ -19,13 +24,9 @@ public class Cafe {
     private String phone;
     private Time open_at;
     private Time close_at;
-//    private List<Pizza> pizza_menu;
 
-    public Cafe() {
-    }
+//    @OneToMany(targetEntity = "pizza")
+//    List<Pizza> pizza_menu;
 
-    public Cafe(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+
 }
