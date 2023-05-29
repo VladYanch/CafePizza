@@ -8,8 +8,9 @@ import lombok.Setter;
 import java.sql.Time;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
-@Data
 @Table(name = "cafe")
 public class Cafe {
 
@@ -22,11 +23,10 @@ public class Cafe {
     private String address;
     private String email;
     private String phone;
-    private Time open_at;
-    private Time close_at;
+//    private Time open_at;
+//    private Time close_at;
 
 //    @OneToMany(targetEntity = "pizza")
 //    List<Pizza> pizza_menu;
-
 
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>List of Pizzas</title>
+
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+<h2>
+    List of Pizzas!
+</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Ingredients</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pizzas : ${pizzas}">
+        <td th:text="${pizzas.id}"></td>
+        <td th:text="${pizzas.name}"></td>
+        <td th:text="${pizzas.size}"></td>
+        <td th:text="${pizzas.key_ingredients}"></td>
+        <td th:text="${pizzas.price}"></td>
+
+        <td>
+            <form th:action="@{/pizzas/edit}" th:method="post">
+                <div>
+                    <input type="hidden" th:value="${pizzas.id}" name="pizzasId">
+                </div>
+                <div>
+                    <button type="submit">Edit</button>
+                </div>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/pizzas/delete}" th:method="post">
+                <div>
+                    <input type="hidden" th:value="${pizzas.id}" name="pizzasId">
+                </div>
+                <div>
+                    <button type="submit">Delete</button>
+                </div>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">Back</a>
+</body>
+</html>

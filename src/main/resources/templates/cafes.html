@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Cafes</title>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+<h2>
+    List of Cafes!
+</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cafes : ${cafes}">
+<!--        th:style="${iter.odd}? 'font-weight: bold;'">-->
+<!--        <td th:text="${iter.index}+1"></td>-->
+        <td th:text="${cafes.id}"></td>
+<!--        <a href="@(/cafes/{id}(id=${cafes.getId()}))" td th:text="${cafes.id}"></a>-->
+        <td th:text="${cafes.name}"></td>
+        <td th:text="${cafes.city}"></td>
+        <td th:text="${cafes.address}"></td>
+        <td th:text="${cafes.email}"></td>
+        <td th:text="${cafes.phone}"></td>
+
+        <td>
+            <form th:action="@{/cafess/edit}" th:method="post">
+                <div>
+                    <input type="hidden" th:value="${cafes.id}" name="cafesId">
+                </div>
+                <div>
+                    <button type="submit">Edit</button>
+                </div>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/cafess/delete}" th:method="post">
+                <div>
+                    <input type="hidden" th:value="${cafes.id}" name="cafesId">
+                </div>
+                <div>
+                    <button type="submit">Delete</button>
+                </div>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">Back</a>
+</body>
+</html>
