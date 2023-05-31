@@ -24,5 +24,5 @@ public class Pizza {
 
     @ManyToOne
     @JoinColumn(name = "cafe_id")
-    Cafe cafe;
+    private Cafe cafe;
 }

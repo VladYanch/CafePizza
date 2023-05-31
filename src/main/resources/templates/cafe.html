@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe</title>
+</head>
+<body>
+<h2>Cafe to edit:</h2>
+
+<form th:action="@{/cafes/cafe}" th:object="${cafes}" method="post" class="form">
+  <div class="form-group">
+    <label for="id">Id:</label>
+    <input class="form-control" type="text" th:field="${id}" id="id" placeholder="Id" th:readonly=true>
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input class="form-control" type="text" th:field="${name}" id="name" placeholder="Name">
+<!--    <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>-->
+  </div>
+  <div class="form-group">
+    <label for="city">City:</label>
+    <input class="form-control" type="text" th:field="${city}" id="city" placeholder="City">
+<!--    <div class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>-->
+  </div>
+  <div class="form-group">
+    <label for="address">Address:</label>
+    <input class="form-control" type="text" th:field="${address}" id="address" placeholder="Address">
+<!--    <div class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>-->
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input class="form-control" type="text" th:field="${email}" id="email" placeholder="Email">
+<!--    <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>-->
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input class="form-control" type="text" th:field="${phone}" id="phone" placeholder="Phone">
+<!--    <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>-->
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+<a href="/">Back</a>
+</body>
+</html>
