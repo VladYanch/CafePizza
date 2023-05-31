@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of Cafes</title>
+    <title>List of Cafe</title>
   <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 <h2>
-    List of Cafes!
+    List of Cafe!
 </h2>
 
 <table>
@@ -34,7 +34,8 @@
         <td th:text="${cafes.phone}"></td>
 
         <td>
-            <form th:action="@{/cafess/edit}" th:method="post">
+<!--            <form th:action="@{/cafes/edit}" th:method="post">-->
+            <form th:action="@{/cafe}" th:method="post">
                 <div>
                     <input type="hidden" th:value="${cafes.id}" name="cafesId">
                 </div>
@@ -44,7 +45,7 @@
             </form>
         </td>
         <td>
-            <form th:action="@{/cafess/delete}" th:method="post">
+            <form th:action="@{/cafes/delete}" th:method="post">
                 <div>
                     <input type="hidden" th:value="${cafes.id}" name="cafesId">
                 </div>

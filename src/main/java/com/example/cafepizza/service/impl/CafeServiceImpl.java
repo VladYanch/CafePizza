@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CafeServiceImpl implements CafeService {
@@ -23,8 +24,10 @@ public class CafeServiceImpl implements CafeService {
         return repository.findAll();
     }
 
-    @Override
-    public Object findById(long id) {
-        return repository.findById(id).orElse(null);
+    public Optional<Cafe> findById(long id) {
+        return repository.findById(id);
+    }
+    public Cafe addOrUpdate(Cafe cafe) {
+        return null;
     }
 }
