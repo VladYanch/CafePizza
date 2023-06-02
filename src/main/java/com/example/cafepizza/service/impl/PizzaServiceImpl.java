@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaServiceImpl implements PizzaService {
@@ -19,7 +20,15 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
-    public List<Pizza> findAll() {
-        return repository.findAll();
+    public List<Pizza> findAll() {return repository.findAll();}
+    @Override
+    public void deletePizza(Long id) { repository.deleteById(id);}
+
+    @Override
+    public Optional<Pizza> findPizza(Long id) {
+        return repository.findById(id);
     }
+
+    @Override
+    public void addPizza(Pizza pizza) { repository.save(pizza);}
 }

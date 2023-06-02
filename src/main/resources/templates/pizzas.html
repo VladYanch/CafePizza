@@ -30,7 +30,7 @@
         <td>
             <form th:action="@{/pizzas/edit}" th:method="post">
                 <div>
-                    <input type="hidden" th:value="${pizzas.id}" name="pizzasId">
+                    <input type="hidden" th:value="${pizzas.id}" name="id">
                 </div>
                 <div>
                     <button type="submit">Edit</button>
@@ -40,7 +40,7 @@
         <td>
             <form th:action="@{/pizzas/delete}" th:method="post">
                 <div>
-                    <input type="hidden" th:value="${pizzas.id}" name="pizzasId">
+                    <input type="hidden" th:value="${pizzas.id}" name="id">
                 </div>
                 <div>
                     <button type="submit">Delete</button>
@@ -50,6 +50,11 @@
     </tr>
     </tbody>
 </table>
+
+<br/>
+<a href="/pizzas/new">new Pizza</a>
+<br/>
+<br/>
 <a href="/">Back</a>
 </body>
 </html>

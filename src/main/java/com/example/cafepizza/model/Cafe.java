@@ -16,15 +16,15 @@ public class Cafe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
     private String city;
     private String address;
     private String email;
     private String phone;
-//    private Time open_at;
-//    private Time close_at;
+    private Time open;
+    private Time close;
 
 //    @OneToMany(targetEntity = "pizza")
 //    List<Pizza> pizza_menu;
