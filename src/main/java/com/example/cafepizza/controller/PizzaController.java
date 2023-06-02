@@ -11,20 +11,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/pizzas")
 public class PizzaController {
-
     private final PizzaService service;
-
     @Autowired
     public PizzaController(PizzaService service) {
         this.service = service;
     }
-
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("pizzas", service.findAll());
         return "pizzas/pizzas";
     }
-
     @PostMapping(value = "/delete")
     public String deletePizza(@RequestParam Long id, RedirectAttributes attributes) {
         service.deletePizza(id);
@@ -33,28 +29,16 @@ public class PizzaController {
     }
     @GetMapping(value = "/new")
     public String addPizza(@ModelAttribute ("pizza") Pizza pizza) {
-        return "pizzas/pizza_new";
+        return "pizzas/pizza";
     }
     @PostMapping("/create")
-//    @PostMapping()
     public String createPizza(@ModelAttribute ("pizza") Pizza pizza) {
-        service.addPizza(pizza);
+        service.addOrUpdate(pizza);
         return "redirect:/pizzas";
     }
     @GetMapping(value = "/edit")
     public String findPizza(@RequestParam ("id") Long id, Model model ) {
-//        service.findById(id);
-        model.addAttribute("pizza",service.findPizza(id));
-//        attributes.addFlashAttribute("edit", id);
-        return "pizzas/pizza_new";
+        model.addAttribute("pizza",service.findById(id));
+        return "pizzas/pizza";
     }
-
-    @PostMapping(value = "/edit")
-    public String editPizza(@ModelAttribute ("pizza") Pizza pizza, RedirectAttributes attributes) {
-        service.addPizza(pizza);
-//        attributes.addFlashAttribute("edit", id);
-//        return "redirect:/pizza";
-        return "redirect:/pizzas";
-    }
-
 }

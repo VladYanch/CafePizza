@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Cafe</title>
 </head>
 <body>
-<h2>Cafe to edit:</h2>
+<h2>Cafe</h2>
 
-<!--<form th:action="@{/cafe}" th:object="${cafe}" method="post" class="form">-->
+<form th:method="POST" th:action="@{/cafes/create}" th:object="${cafe}" class="form">
+        <input type="hidden" th:field="*{id}" id="id"/><br/>
+        <label for="name">Name</label>
+        <input th:field="*{name}" id="name"/><br/>
+        <label for="city">City</label>
+        <input th:field="*{city}" id="city"/><br/>
+        <label for="address">Address</label>
+        <input th:field="*{address}" id="address"/><br/>
+        <label for="email">E-mail</label>
+        <input th:field="*{email}" id="email"/><br/>
+        <label for="phone">Phone</label>
+        <input th:field="*{phone}" id="phone"/><br/>
+        <label for="open">Open</label>
+        <input th:field="*{open}" id="open"/><br/>
+        <label for="close">Close</label>
+        <input th:field="*{close}" id="close"/><br/>
+        <td>
+        <br/>
+             <div>
+                <button type="submit">Submit</button>
+             </div>
+        </td>
+</form>
+<br/>
+<a href="/cafes">Back</a>
+</body>
+</html>
+
 <!--  <div class="form-group">-->
 <!--    <label for="id">Id:</label>-->
 <!--    <input class="form-control" type="text" th:field="${id}" id="id" placeholder="Id" th:readonly=true>-->
@@ -57,6 +84,3 @@
 <!--</tr>-->
 <!--<p th:text="${cafe.id}">VALUE</p>-->
 <!--<br/>-->
-<a href="/cafes">Back</a>
-</body>
-</html>

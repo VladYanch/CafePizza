@@ -22,7 +22,7 @@ public class Pizza {
     private String key_ingredients;
     private double price;
 
-//    @ManyToOne
-//    @JoinColumn(name = "cafe_id")
-//    private Cafe cafe;
+    @ManyToOne
+    @JoinColumn(name = "cafe_id")
+    private Cafe cafe;
 }

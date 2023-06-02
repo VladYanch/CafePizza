@@ -8,11 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/cafes")
-@SessionAttributes("editCafe")
 public class CafeController {
     private final CafeService service;
 
@@ -24,7 +21,7 @@ public class CafeController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("cafes", service.findAll());
-        return "cafes";
+        return "cafes/cafes";
     }
 
     @PostMapping(value = "/delete")
@@ -33,23 +30,20 @@ public class CafeController {
         attributes.addFlashAttribute("deleted", id);
         return "redirect:/cafes";
     }
+    @GetMapping(value = "/new")
+    public String addCafe(@ModelAttribute ("cafe") Cafe cafe) {
+        return "cafes/cafe";
+    }
+    @PostMapping("/create")
+    public String createCafe(@ModelAttribute ("cafe") Cafe cafe) {
+        service.addOrUpdate(cafe);
+        return "redirect:/cafes";
+    }
+    @GetMapping(value = "/edit")
+    public String findCafe(@RequestParam ("id") Long id, Model model ) {
+        model.addAttribute("cafe",service.findById(id));
+        return "cafes/cafe";
 
-//    @PostMapping(value = "/delete")
-//    public String deleteCafe(@PathVariable ("id") Long id, RedirectAttributes attributes) {
-//        service.deleteCafe(id);
-//        attributes.addFlashAttribute("deleted", id);
-//        return "redirect:/cafes";
-//    }
-
-    @PostMapping(value = "/edit")
-    public String editCafe(@RequestParam Long id, RedirectAttributes attributes, Model model) {
-        Optional<Cafe> cafe = service.findById(id);
-        attributes.addFlashAttribute("edit", id);
-//        model.addAttribute("cafe", service.findById(id));
-        model.addAttribute("cafe", cafe);
-//        return "redirect:/cafe";
-//        return "/cafe";
-        return "cafe";
     }
 
 //    @GetMapping("/cafes/{id}")

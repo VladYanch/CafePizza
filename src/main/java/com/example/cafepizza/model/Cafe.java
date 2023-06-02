@@ -23,8 +23,8 @@ public class Cafe {
     private String address;
     private String email;
     private String phone;
-    private Time open;
-    private Time close;
+    private String open;
+    private String close;
 
 //    @OneToMany(targetEntity = "pizza")
 //    List<Pizza> pizza_menu;

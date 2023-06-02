@@ -9,8 +9,6 @@ import java.util.Optional;
 public interface PizzaService {
     List<Pizza> findAll();
     void deletePizza(Long id);
-
-    Optional<Pizza> findPizza(Long id);
-
-    void addPizza(Pizza pizza);
+    Optional<Pizza> findById(Long id);
+    void addOrUpdate(Pizza pizza);
 }
