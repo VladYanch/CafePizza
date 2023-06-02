@@ -24,22 +24,22 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="cafe : ${cafes}">
+    <tr th:each="cafes : ${cafes}">
 <!--        th:style="${iter.odd}? 'font-weight: bold;'">-->
 <!--        <td th:text="${iter.index}+1"></td>-->
-        <td th:text="${cafe.id}"></td>
+        <td th:text="${cafes.id}"></td>
 <!--        <a href="@(/cafe/{id}(id=${cafe.getId()}))" td th:text="${cafe.id}"></a>-->
-        <td th:text="${cafe.name}"></td>
-        <td th:text="${cafe.city}"></td>
-        <td th:text="${cafe.address}"></td>
-        <td th:text="${cafe.email}"></td>
-        <td th:text="${cafe.phone}"></td>
-        <td th:text="${cafe.open}"></td>
-        <td th:text="${cafe.close}"></td>
+        <td th:text="${cafes.name}"></td>
+        <td th:text="${cafes.city}"></td>
+        <td th:text="${cafes.address}"></td>
+        <td th:text="${cafes.email}"></td>
+        <td th:text="${cafes.phone}"></td>
+        <td th:text="${cafes.open}"></td>
+        <td th:text="${cafes.close}"></td>
         <td>
-            <form th:action="@{/cafes/edit}" th:method="post">
+            <form th:action="@{/cafes/edit}" th:method="GET">
                 <div>
-                    <input type="hidden" th:value="${cafe.id}" name="id">
+                    <input type="hidden" th:value="${cafes.id}" name="id">
                 </div>
                 <div>
                     <button type="submit">Edit</button>
@@ -47,9 +47,9 @@
             </form>
         </td>
         <td>
-            <form th:action="@{/cafes/delete}" th:method="post">
+            <form th:action="@{/cafes/delete}" th:method="POST">
                 <div>
-                    <input type="hidden" th:value="${cafe.id}" name="id">
+                    <input type="hidden" th:value="${cafes.id}" name="id">
                 </div>
                 <div>
                     <button type="submit">Delete</button>
@@ -60,7 +60,7 @@
     </tbody>
 </table>
 <br/>
-<a href="/cafes/edit">new Cafe</a>
+<a href="/cafes/new">new Cafe</a>
 <br/>
 <br>
 <a href="/">Back</a>

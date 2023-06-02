@@ -25,10 +25,10 @@ public class PizzaServiceImpl implements PizzaService {
     public void deletePizza(Long id) { repository.deleteById(id);}
 
     @Override
-    public Optional<Pizza> findPizza(Long id) {
+    public Optional<Pizza> findById(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public void addPizza(Pizza pizza) { repository.save(pizza);}
+    public void addOrUpdate(Pizza pizza) { repository.save(pizza);}
 }
