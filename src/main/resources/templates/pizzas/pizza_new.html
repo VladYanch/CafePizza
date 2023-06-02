@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+</head>
+<body>
+<h2>Pizza</h2>
+
+<form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}">
+<!--    <label for="id">Id</label>-->
+    <input type="hidden" th:field="*{id}" id="id"/><br/>
+    <label for="name">Name</label>
+    <input th:field="*{name}" id="name"/><br/>
+    <label for="size">Size</label>
+    <input th:field="*{size}" id="size"/><br/>
+    <label for="key_ingredients">Ingredients</label>
+    <input th:field="*{key_ingredients}" id="key_ingredients"/><br/>
+    <label for="price">Price</label>
+    <input th:field="*{price}" id="price"/><br/>
+<!--    <label for="cafe_id">Id</label>-->
+<!--    <input th:field="*{cafe}" id="cafe_id"/><br/>-->
+    <td>
+        <br/>
+<!--        <form th:action="@{/pizzas/create}" th:method="post">-->
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+<!--        </form>-->
+    </td>
+</form>
+<br/>
+<a href="/pizzas">Back</a>
+</body>
+</html>

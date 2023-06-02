@@ -24,10 +24,14 @@ public class CafeServiceImpl implements CafeService {
         return repository.findAll();
     }
 
+
+    public void deleteCafe(Long id) { repository.deleteById(id);}
+
     public Optional<Cafe> findById(long id) {
         return repository.findById(id);
     }
-    public Cafe addOrUpdate(Cafe cafe) {
-        return null;
-    }
+
+//    public Cafe addOrUpdate(Cafe cafe) {
+//        return null;
+//    }
 }

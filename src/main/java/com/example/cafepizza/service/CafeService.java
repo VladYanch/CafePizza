@@ -9,7 +9,9 @@ import java.util.Optional;
 
 public interface CafeService {
     List<Cafe> findAll();
+    void deleteCafe(Long id);
 
     Optional<Cafe> findById(long id);
-    Cafe addOrUpdate(Cafe cafe);
+//    Cafe addOrUpdate(Cafe cafe);
+
 }
