@@ -7,9 +7,9 @@
 <body>
 <h2>Pizza</h2>
 
-<form th:method="POST" th:action="@{/create}" th:object="${pizza}">
-    <label for="id">Id</label>
-    <input th:field="*{id}" id="Id"/><br/>
+<form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}">
+<!--    <label for="id">Id</label>-->
+    <input type="hidden" th:field="*{id}" id="id"/><br/>
     <label for="name">Name</label>
     <input th:field="*{name}" id="name"/><br/>
     <label for="size">Size</label>
@@ -22,11 +22,11 @@
 <!--    <input th:field="*{cafe}" id="cafe_id"/><br/>-->
     <td>
         <br/>
-        <form th:action="@{/pizzas/create}" th:method="post">
+<!--        <form th:action="@{/pizzas/create}" th:method="post">-->
             <div>
                 <button type="submit">Submit</button>
             </div>
-        </form>
+<!--        </form>-->
     </td>
 </form>
 <br/>

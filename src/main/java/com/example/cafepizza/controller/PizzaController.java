@@ -22,7 +22,7 @@ public class PizzaController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("pizzas", service.findAll());
-        return "pizzas";
+        return "pizzas/pizzas";
     }
 
     @PostMapping(value = "/delete")
@@ -33,37 +33,28 @@ public class PizzaController {
     }
     @GetMapping(value = "/new")
     public String addPizza(@ModelAttribute ("pizza") Pizza pizza) {
-        pizza.setId(7L);
-        pizza.setName("Salami");
-        pizza.setSize("standard");
-        pizza.setKey_ingredients("Tomato sauce, salami, mozzarella");
-        pizza.setPrice(7.00);
-//        service.addPizza(pizza);
-//        return "redirect:/pizzas";
-        return "pizza";
-//        return "create";
+        return "pizzas/pizza_new";
     }
-//    @PostMapping("/create")
-    @PostMapping()
+    @PostMapping("/create")
+//    @PostMapping()
     public String createPizza(@ModelAttribute ("pizza") Pizza pizza) {
         service.addPizza(pizza);
         return "redirect:/pizzas";
     }
-
-    @PostMapping(value = "/edit")
-    public String editPizza(@RequestParam Long id, RedirectAttributes attributes) {
-        service.deletePizza(id);
-        attributes.addFlashAttribute("edit", id);
-        return "redirect:/pizza";
-//        return "pizza";
+    @GetMapping(value = "/edit")
+    public String findPizza(@RequestParam ("id") Long id, Model model ) {
+//        service.findById(id);
+        model.addAttribute("pizza",service.findPizza(id));
+//        attributes.addFlashAttribute("edit", id);
+        return "pizzas/pizza_new";
     }
 
-//    @GetMapping(value = "/pizza")
-//    public String findPizza(@RequestParam Long id, RedirectAttributes attributes) {
-////        service.findById(id);
-//        service.findPizza(id);
+    @PostMapping(value = "/edit")
+    public String editPizza(@ModelAttribute ("pizza") Pizza pizza, RedirectAttributes attributes) {
+        service.addPizza(pizza);
 //        attributes.addFlashAttribute("edit", id);
-//        return "pizza";
-//    }
+//        return "redirect:/pizza";
+        return "redirect:/pizzas";
+    }
 
 }

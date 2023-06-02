@@ -3,13 +3,20 @@ values (1, 'Losteria Dortmund', 'Dortmund', 'Friedensplatz 8', '+49 0231 5844552
        (2, 'Milano im Westend','Munster','Wilhelmstr. 26' , '+49 0251 25962','mail@milano-westend.de','9:00','21:00'),
        (3, 'Bella Mia','Waltrop','Dortmunderstr. 132' , '+49 2309 7820386','info@bella-mia.de','10:00','22:00');
 
-insert into pizza (id, name, size, price, key_ingredients)
-values (1, 'Pizza Romano', 'Standart', 6.70, 'Tomato sauce, mozzarella, rosemary, semolina'),
-       (2, 'Quattro Formaggi', 'Large', 11.30, 'Tomato sauce, mozzarella, gorgonzola, fontina, parmiggiano'),
-       (3, 'Pizza Calzone', 'Standart', 7.65, 'Tomato sauce, pepperoni, ricotta'),
-       (4, 'Pizza Hawaii', 'Family', 13.80, 'Tomato sauce, bacon, mozzarella, pineapple'),
-       (5, 'Pizza Carbonara', 'Lage', 9.29, 'Tomato sauce, bacon, garlic, onions, mushrooms'),
-       (6, 'Pizza Napoletana', 'XL', 8.49, 'Tomato sauce, mozzarella, basil');
+insert into pizza (name, size, price, key_ingredients)
+values ('Pizza Romano', 'Standart', 6.70, 'Tomato sauce, mozzarella, rosemary, semolina'),
+       ('Quattro Formaggi', 'Large', 11.30, 'Tomato sauce, mozzarella, gorgonzola, fontina, parmiggiano'),
+       ('Pizza Calzone', 'Standart', 7.65, 'Tomato sauce, pepperoni, ricotta'),
+       ('Pizza Hawaii', 'Family', 13.80, 'Tomato sauce, bacon, mozzarella, pineapple'),
+       ('Pizza Carbonara', 'Lage', 9.29, 'Tomato sauce, bacon, garlic, onions, mushrooms'),
+       ('Pizza Napoletana', 'XL', 8.49, 'Tomato sauce, mozzarella, basil');
+
+-- values (1, 'Pizza Romano', 'Standart', 6.70, 'Tomato sauce, mozzarella, rosemary, semolina'),
+--        (2, 'Quattro Formaggi', 'Large', 11.30, 'Tomato sauce, mozzarella, gorgonzola, fontina, parmiggiano'),
+--        (3, 'Pizza Calzone', 'Standart', 7.65, 'Tomato sauce, pepperoni, ricotta'),
+--        (4, 'Pizza Hawaii', 'Family', 13.80, 'Tomato sauce, bacon, mozzarella, pineapple'),
+--        (5, 'Pizza Carbonara', 'Lage', 9.29, 'Tomato sauce, bacon, garlic, onions, mushrooms'),
+--        (6, 'Pizza Napoletana', 'XL', 8.49, 'Tomato sauce, mozzarella, basil');
 
 -- insert into pizza (id, name, size, price, key_ingredients, cafe_id)
 -- values (1, 'Pizza Romano', 'Standard', 6.70, 'Tomato sauce, mozzarella, rosemary, semolina',1),

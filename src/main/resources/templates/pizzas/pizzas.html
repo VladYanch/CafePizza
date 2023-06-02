@@ -28,7 +28,7 @@
         <td th:text="${pizzas.price}"></td>
 
         <td>
-            <form th:action="@{/pizzas/edit}" th:method="post">
+            <form th:action="@{/pizzas/edit}" th:method="GET">
                 <div>
                     <input type="hidden" th:value="${pizzas.id}" name="id">
                 </div>
@@ -53,6 +53,7 @@
 <br/>
 <a href="/pizzas/new">new Pizza</a>
 <br/>
+<br>
 <a href="/">Back</a>
 </body>
 </html>
