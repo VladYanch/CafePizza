@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,7 +27,7 @@ public class Cafe {
     private String open;
     private String close;
 
-//    @OneToMany(targetEntity = "pizza")
-//    List<Pizza> pizza_menu;
+    @OneToMany(mappedBy = "cafe",cascade = CascadeType.ALL)
+    List<Pizza> pizza_menu = new ArrayList<>();
 
 }

@@ -1,5 +1,27 @@
+/*.form {*/
+/*    background-color: seashell;*/
+/*}*/
+
 h2 {
     color: #3d9a9a;
+    text-align: center;
+    /*margin: 20pt;*/
+    padding: 20pt;
+    background-color: lightblue;
+}
+
+.header {
+    color: darkblue;
+    text-align: center;
+    margin: 20pt;
+    padding: 20pt;
+    background-color: #e4e6ad00;
+}
+
+.pizza {
+    font-size: 24pt;
+    margin-left: 95pt;
+    padding: 20pt;
 }
 
 .error {
