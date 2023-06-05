@@ -21,8 +21,9 @@ public class Pizza {
     private String size;
     private String key_ingredients;
     private double price;
+    private String image;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "cafe_id")
     private Cafe cafe;
 }

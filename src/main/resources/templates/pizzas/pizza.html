@@ -4,19 +4,39 @@
     <meta charset="UTF-8">
     <title>Pizza</title>
 </head>
-<body>
-<h2>Pizza</h2>
+<body style="margin: 20pt;">
+
+
+<div style="font-size: 24pt; margin-left: 60pt; margin-bottom: 10pt;">Pizza</div>
+
+<div>
+    <img width="231ptx" height="231ptx" th:src="@{'/img/marherita.png'}"/>
+<!--    <img width="231ptx" height="231ptx" th:src="${pizza.image}"/>-->
+<!--    <td th:text="${System.out.println(pizza.image)}"></td>-->
+<!--    <td th:text="${System.out.println(pizza.get.image())}"></td>-->
+<!--    <td th:text="#{System.out.println(${pizza.get.image()})"></td>-->
+<!--    <img width="231ptx" height="231ptx" th:src="@${System.out.  image}"/>-->
+</div>
 
 <form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}" class="form">
+    <input type="hidden" th:field="*{image}" id="image">
+<!--    <div>-->
+<!--        <img width="231ptx" height="231ptx" th:src="@{th:field=${image}}"/>-->
+<!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080/'+image}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080'+*{pizza.image}}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080'+@{image}}"/>&ndash;&gt;-->
+<!--    </div>-->
     <input type="hidden" th:field="*{id}" id="id"/><br/>
     <label for="name">Name</label>
     <input th:field="*{name}" id="name"/><br/>
     <label for="size">Size</label>
-    <input th:field="*{size}" id="size"/><br/>
+    <input style="margin-top: 10pt;" th:field="*{size}" id="size"/><br/>
     <label for="key_ingredients">Ingredients</label>
-    <input th:field="*{key_ingredients}" id="key_ingredients"/><br/>
+    <input style="margin-top: 10pt;"th:field="*{key_ingredients}" id="key_ingredients"/><br/>
     <label for="price">Price</label>
-    <input th:field="*{price}" id="price"/><br/>
+    <input style="margin-top: 10pt;"th:field="*{price}" id="price"/><br/>
+    <label for="cafe">Cafe</label>
+    <input style="margin-top: 10pt;"th:field="*{cafe}" id="cafe"/><br/>
     <td>
         <br/>
             <div>

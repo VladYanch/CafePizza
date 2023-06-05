@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>List of Pizza</title>
 
     <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
-<h2>
-    List of Pizza!
-</h2>
+<div class="header">
+    <h2>
+        List of Pizza!
+    </h2>
+</div>
 <table>
     <thead>
     <tr>
+        <th>Pic</th>
         <th>Id</th>
         <th>Name</th>
         <th>Size</th>
@@ -21,6 +24,10 @@
     </thead>
     <tbody>
     <tr th:each="pizzas : ${pizzas}">
+<!--        <td th:src="${static/img/marherita.jpeg}"></td>-->
+        <td>
+            <img width="77ptx" height="77ptx" th:src="${pizzas.image}"/>
+        </td>
         <td th:text="${pizzas.id}"></td>
         <td th:text="${pizzas.name}"></td>
         <td th:text="${pizzas.size}"></td>

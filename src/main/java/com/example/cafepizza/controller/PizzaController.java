@@ -29,6 +29,7 @@ public class PizzaController {
     }
     @GetMapping(value = "/new")
     public String addPizza(@ModelAttribute ("pizza") Pizza pizza) {
+        pizza.setImage("/img/marherita.png");
         return "pizzas/pizza";
     }
     @PostMapping("/create")
