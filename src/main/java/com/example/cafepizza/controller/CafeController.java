@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("/cafes")
 public class CafeController {
@@ -43,9 +45,14 @@ public class CafeController {
     public String findCafe(@RequestParam ("id") Long id, Model model ) {
         model.addAttribute("cafe",service.findById(id));
         return "cafes/cafe";
-
     }
 
+    @GetMapping(value = "/show")
+    public String showCafeWithMenu(@RequestParam ("id") Long id, Model model ) {
+        model.addAttribute("cafe",service.findById(id));
+        model.addAttribute("pizzas",service.menuById(id));
+        return "cafes/menu";
+    }
 //    @GetMapping("/cafes/{id}")
 //    public String findId(@RequestParam("id") long id, Model model) {
 //        model.addAttribute("cafes", service.findById(id));

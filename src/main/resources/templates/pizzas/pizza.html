@@ -10,17 +10,45 @@
 <div style="font-size: 24pt; margin-left: 60pt; margin-bottom: 10pt;">Pizza</div>
 
 <div>
-    <img width="231ptx" height="231ptx" th:src="@{'/img/marherita.png'}"/>
+<!--    <img width="231ptx" height="231ptx" th:src="@{'/img/marherita.jpeg'}"/>-->
+    <img width="231ptx" height="231ptx" th:src="@{'/img/tsezar.jpeg'}"/>
+<!--    <img width="77ptx" height="77ptx" th:src="@{pizza.image}"/>-->
 <!--    <img width="231ptx" height="231ptx" th:src="${pizza.image}"/>-->
 <!--    <td th:text="${System.out.println(pizza.image)}"></td>-->
 <!--    <td th:text="${System.out.println(pizza.get.image())}"></td>-->
 <!--    <td th:text="#{System.out.println(${pizza.get.image()})"></td>-->
 <!--    <img width="231ptx" height="231ptx" th:src="@${System.out.  image}"/>-->
+<!--    <img width="231ptx" height="231ptx" th:src="@{~/${pizza.image}}"/>-->
+<!--    <img width="231ptx" height="231ptx" th:src="@{${pizza.image}}"/>-->
+<!--    <img width="231ptx" height="231ptx" th:src="@{{pizza.getImage()}}"/>-->
 </div>
 
+<!--    <a th:href="@{/pizzas/{id}(id=${pizzas.getId()})}" th:text="${pizzas.getImage()}">user</a>-->
+
+<!--    <p th:text="${image}"></p>-->
+
+<!--    <p th:text="Привет"></p>-->
+<!--    <p th:text=#pizza.id></p>-->
+
+<!--<form th:object="${pizza}" th:field="*{image}" th:id="image">-->
+<!--&lt;!&ndash;    <p th:text="*{System.out.printnl(pizza.image)}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p th:text="*{pizza.image}"></p>&ndash;&gt;-->
+<!--    <p th:text="*{image}"></p>-->
+<!--    <p th:text="*{id}"></p>-->
+<!--</form>-->
 <form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}" class="form">
-    <input type="hidden" th:field="*{image}" id="image">
-<!--    <div>-->
+<!--    <input type="hidden" th:field="*{image}" id="image">-->
+<!--    <input th:field="*{image}" id="image">-->
+<!--    <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{${'~' + image}}"/>-->
+<!--    <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{*{image}"/>-->
+
+<!--    <img width="231ptx" height="231ptx" th:src="@{${pizza.getImage()}}"/>-->
+
+    <!--        <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{'~' + image}"/>-->
+<!--        <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{'~' + image}"/>-->
+<!--        <img width="231ptx" height="231ptx" th:src="@{image}"/>-->
+
+    <!--    <div>-->
 <!--        <img width="231ptx" height="231ptx" th:src="@{th:field=${image}}"/>-->
 <!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080/'+image}"/>&ndash;&gt;-->
 <!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080'+*{pizza.image}}"/>&ndash;&gt;-->

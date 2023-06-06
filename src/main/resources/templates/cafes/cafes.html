@@ -13,6 +13,7 @@
 <table>
     <thead>
     <tr>
+        <th>№</th>
         <th>Id</th>
         <th>Name</th>
         <th>City</th>
@@ -24,18 +25,37 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="cafes : ${cafes}">
-<!--        th:style="${iter.odd}? 'font-weight: bold;'">-->
-<!--        <td th:text="${iter.index}+1"></td>-->
+    <tr th:each="cafes, iter : ${cafes}">
+        <td th:text="${iter.index}+1"></td>
         <td th:text="${cafes.id}"></td>
 <!--        <a href="@(/cafe/{id}(id=${cafe.getId()}))" td th:text="${cafe.id}"></a>-->
-        <td th:text="${cafes.name}"></td>
+<!--        <td th:text="${cafes.name}"></td>-->
+<!--        <td th:href="${cafes.name}">${cafes.name}</td>-->
+
+<!--        Последние изменения-->
+        <td>
+<!--            <form method="GET" th:action="@{/cafes/menu}" th:object="${cafe}">-->
+<!--                <a href="cafes/menu" th:text="${cafes.name}"></a>-->
+                <a th:href="@{cafes/menu}" th:text="${cafes.name}"
+                            method="GET" th:action="@{/cafes/show}"></a>
+<!--            </form>-->
+        </td>
         <td th:text="${cafes.city}"></td>
         <td th:text="${cafes.address}"></td>
         <td th:text="${cafes.email}"></td>
         <td th:text="${cafes.phone}"></td>
         <td th:text="${cafes.open}"></td>
         <td th:text="${cafes.close}"></td>
+        <td>
+            <form th:action="@{/cafes/show}" th:method="GET">
+                <div>
+                    <input type="hidden" th:value="${cafes.id}" name="id">
+                </div>
+                <div>
+                    <button type="submit">Menu</button>
+                </div>
+            </form>
+        </td>
         <td>
             <form th:action="@{/cafes/edit}" th:method="GET">
                 <div>

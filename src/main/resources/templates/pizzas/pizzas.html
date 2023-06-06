@@ -11,29 +11,43 @@
         List of Pizza!
     </h2>
 </div>
+
 <table>
     <thead>
     <tr>
         <th>Pic</th>
+        <th>№</th>
         <th>Id</th>
         <th>Name</th>
         <th>Size</th>
         <th>Ingredients</th>
         <th>Price</th>
+        <th>Cafe</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="pizzas : ${pizzas}">
+    <tr th:each="pizzas, iter : ${pizzas}">
 <!--        <td th:src="${static/img/marherita.jpeg}"></td>-->
         <td>
             <img width="77ptx" height="77ptx" th:src="${pizzas.image}"/>
         </td>
+        <td th:text="${iter.index}+1"></td>
         <td th:text="${pizzas.id}"></td>
         <td th:text="${pizzas.name}"></td>
         <td th:text="${pizzas.size}"></td>
         <td th:text="${pizzas.key_ingredients}"></td>
         <td th:text="${pizzas.price}"></td>
-
+        <td th:text="${pizzas.cafe.getName()}"></td>
+        <td>
+            <form th:action="@{/cafes/show}" th:method="GET">
+                <div>
+                    <input type="hidden" th:value="${pizzas.cafe.getId()}" name="id">
+                </div>
+                <div>
+                    <button type="submit">Cafe</button>
+                </div>
+            </form>
+        </td>
         <td>
             <form th:action="@{/pizzas/edit}" th:method="GET">
                 <div>

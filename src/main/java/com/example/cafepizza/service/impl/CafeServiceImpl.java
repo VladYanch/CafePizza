@@ -3,6 +3,7 @@ package com.example.cafepizza.service.impl;
 import com.example.cafepizza.model.Cafe;
 import com.example.cafepizza.model.Pizza;
 import com.example.cafepizza.repository.CafeRepository;
+import com.example.cafepizza.repository.PizzaRepository;
 import com.example.cafepizza.service.CafeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,11 @@ import java.util.Optional;
 public class CafeServiceImpl implements CafeService {
 
     private final CafeRepository repository;
+    private final PizzaRepository pizzaRepository;
     @Autowired
-    public CafeServiceImpl(CafeRepository repository) {
+    public CafeServiceImpl(CafeRepository repository, PizzaRepository pizzaRepository) {
         this.repository = repository;
+        this.pizzaRepository = pizzaRepository;
     }
     @Override
     public List<Cafe> findAll() {
@@ -27,4 +30,10 @@ public class CafeServiceImpl implements CafeService {
         return repository.findById(id);
     }
     public void addOrUpdate(Cafe cafe) { repository.save(cafe);}
+
+    @Override
+    public List<Pizza> menuById(Long id) {
+        return pizzaRepository.findAll().stream().filter(x-> x.getCafe().getId().equals(id)).toList();
+//        return pizzaRepository.findAll();
+    }
 }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe</title>
+</head>
+<body>
+<h2>Cafe</h2>
+
+<!--<form th:method="GET" th:action="@{/cafes/menu}" th:object="${cafe}">-->
+<!--<p th:text="${cafe.name}">VALUE</p>-->
+<!--<p>Привет!</p>-->
+<!--<p th:text="${cafe.getName()}">VALUE</p>-->
+<!--</form>-->
+
+<form th:method="POST" th:action="@{/cafes/menu}" th:object="${cafe}" class="form">
+<!--    <p th:field="*{name}" id="name">name</p>-->
+    <input type="hidden" th:field="*{id}" id="id"/><br/>
+    <label for="name">Name</label>
+    <input th:field="*{name}" id="name"/><br/>
+    <label for="city">City</label>
+    <input th:field="*{city}" id="city"/><br/>
+    <label for="address">Address</label>
+    <input th:field="*{address}" id="address"/><br/>
+    <label for="email">E-mail</label>
+    <input th:field="*{email}" id="email"/><br/>
+    <label for="phone">Phone</label>
+    <input th:field="*{phone}" id="phone"/><br/>
+    <label for="open">Open</label>
+    <input th:field="*{open}" id="open"/><br/>
+    <label for="close">Close</label>
+    <input th:field="*{close}" id="close"/><br/>
+</form>
+
+<div class="header">
+    <h2>
+        Menu
+    </h2>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Pic</th>
+        <th>№</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Ingredients</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pizzas, iter : ${pizzas}">
+        <!--        <td th:src="${static/img/marherita.jpeg}"></td>-->
+        <td>
+<!--            <a th:href="@{/pizzas/{id}(id=${pizzas.getId()})}" th:text="${pizzas.getImage()}">user</a>-->
+            <img width="154ptx" height="154ptx" th:src="${pizzas.image}"/>
+        </td>
+        <td th:text="${iter.index}+1"></td>
+        <td th:text="${pizzas.id}"></td>
+        <td th:text="${pizzas.name}"></td>
+        <td th:text="${pizzas.size}"></td>
+        <td th:text="${pizzas.key_ingredients}"></td>
+        <td th:text="${pizzas.price}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a href="/cafes">Back to Cafes</a>
+<br><br/>
+<a href="/pizzas">Back to Pizzas</a>
+</body>
+</html>
