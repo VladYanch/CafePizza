@@ -27,7 +27,6 @@
     </thead>
     <tbody>
     <tr th:each="pizzas, iter : ${pizzas}">
-<!--        <td th:src="${static/img/marherita.jpeg}"></td>-->
         <td>
             <img width="77ptx" height="77ptx" th:src="${pizzas.image}"/>
         </td>
@@ -71,10 +70,27 @@
     </tr>
     </tbody>
 </table>
+
 <br/>
-<a href="/pizzas/new">new Pizza</a>
-<br/>
-<br>
-<a href="/">Back</a>
+<div style="display: flex; margin-top: 2pt; margin-left: 20pt">
+    <td>
+        <br/>
+        <div>
+            <form th:action="@{/pizzas/new}" th:method="GET">
+                <button type="submit" style="padding: 5pt; font-size: 12pt;
+                         border-radius: 10pt; width: 60pt">New</button>
+            </form>
+        </div>
+    </td>
+    <td>
+        <form th:action="@{/}" th:method="GET">
+            <button type="submit" style="margin-left: 20pt; padding: 5pt;
+                 width: 60pt; border-radius: 10pt; font-size: 12pt" >Back</button>
+        </form>
+    </td>
+</div>
+
+<!--<br/>-->
+<!--<a href="/pizzas/new">new Pizza</a>-->
 </body>
 </html>
