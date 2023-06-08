@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/pizzas")
+@SessionAttributes("editPizza")
 public class PizzaController {
     private final PizzaService service;
     @Autowired
@@ -29,17 +30,19 @@ public class PizzaController {
     }
     @GetMapping(value = "/new")
     public String addPizza(@ModelAttribute ("pizza") Pizza pizza) {
-        pizza.setImage("/img/marherita.png");
-        return "pizzas/pizza";
+        pizza.setImage("/img/marherita.jpeg");
+        pizza.setName("New Pizza");
+        return "pizzas/new";
     }
     @PostMapping("/create")
     public String createPizza(@ModelAttribute ("pizza") Pizza pizza) {
-        service.addOrUpdate(pizza);
+//        if (!pizza.getName().equals("New Pizza"))
+            service.addOrUpdate(pizza);
         return "redirect:/pizzas";
     }
     @GetMapping(value = "/edit")
     public String findPizza(@RequestParam ("id") Long id, Model model ) {
-        model.addAttribute("pizza",service.findById(id));
+        model.addAttribute("pizza",service.findById(id).get());
         return "pizzas/pizza";
     }
 }

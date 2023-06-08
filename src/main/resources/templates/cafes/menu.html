@@ -8,8 +8,11 @@
 <h2>Cafe</h2>
 
 <!--<form th:method="GET" th:action="@{/cafes/menu}" th:object="${cafe}">-->
-<!--<p th:text="${cafe.name}">VALUE</p>-->
 <!--<p>Привет!</p>-->
+<!--<p th:text="${editCafe.name}"></p>-->
+<!--<p th:text="${cafe.name}"></p>-->
+<!--<p th:text="${cafe.getName()}"></p>-->
+
 <!--<p th:text="${cafe.getName()}">VALUE</p>-->
 <!--</form>-->
 
@@ -17,15 +20,15 @@
 <!--    <p th:field="*{name}" id="name">name</p>-->
     <input type="hidden" th:field="*{id}" id="id"/><br/>
     <label for="name">Name</label>
-    <input th:field="*{name}" id="name"/><br/>
+    <input th:field="*{name}" id="name" readonly="readonly"/><br/>
     <label for="city">City</label>
-    <input th:field="*{city}" id="city"/><br/>
+    <input th:field="*{city}" id="city" readonly="readonly"/><br/>
     <label for="address">Address</label>
-    <input th:field="*{address}" id="address"/><br/>
+    <input th:field="*{address}" id="address" readonly="readonly"/><br/>
     <label for="email">E-mail</label>
-    <input th:field="*{email}" id="email"/><br/>
+    <input th:field="*{email}" id="email" readonly="readonly"/><br/>
     <label for="phone">Phone</label>
-    <input th:field="*{phone}" id="phone"/><br/>
+    <input th:field="*{phone}" id="phone" readonly="readonly"/><br/>
     <label for="open">Open</label>
     <input th:field="*{open}" id="open"/><br/>
     <label for="close">Close</label>
@@ -66,7 +69,6 @@
     </tr>
     </tbody>
 </table>
-
 <br/>
 <a href="/cafes">Back to Cafes</a>
 <br><br/>

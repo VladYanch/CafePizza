@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/cafes")
+@SessionAttributes("editCafe")
 public class CafeController {
     private final CafeService service;
 
@@ -43,13 +44,13 @@ public class CafeController {
     }
     @GetMapping(value = "/edit")
     public String findCafe(@RequestParam ("id") Long id, Model model ) {
-        model.addAttribute("cafe",service.findById(id));
+        model.addAttribute("cafe",service.findById(id).get());
         return "cafes/cafe";
     }
 
     @GetMapping(value = "/show")
     public String showCafeWithMenu(@RequestParam ("id") Long id, Model model ) {
-        model.addAttribute("cafe",service.findById(id));
+        model.addAttribute("cafe",service.findById(id).get());
         model.addAttribute("pizzas",service.menuById(id));
         return "cafes/menu";
     }

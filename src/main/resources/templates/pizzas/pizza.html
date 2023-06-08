@@ -6,73 +6,49 @@
 </head>
 <body style="margin: 20pt;">
 
+<div style="font-size: 30pt; margin-left: 180pt; margin-bottom: 20pt" th:text="${pizza.name}"></div>
 
-<div style="font-size: 24pt; margin-left: 60pt; margin-bottom: 10pt;">Pizza</div>
-
+<container class="hero" style="display: flex; height: 308px">
 <div>
-<!--    <img width="231ptx" height="231ptx" th:src="@{'/img/marherita.jpeg'}"/>-->
-    <img width="231ptx" height="231ptx" th:src="@{'/img/tsezar.jpeg'}"/>
-<!--    <img width="77ptx" height="77ptx" th:src="@{pizza.image}"/>-->
-<!--    <img width="231ptx" height="231ptx" th:src="${pizza.image}"/>-->
-<!--    <td th:text="${System.out.println(pizza.image)}"></td>-->
-<!--    <td th:text="${System.out.println(pizza.get.image())}"></td>-->
-<!--    <td th:text="#{System.out.println(${pizza.get.image()})"></td>-->
-<!--    <img width="231ptx" height="231ptx" th:src="@${System.out.  image}"/>-->
-<!--    <img width="231ptx" height="231ptx" th:src="@{~/${pizza.image}}"/>-->
-<!--    <img width="231ptx" height="231ptx" th:src="@{${pizza.image}}"/>-->
-<!--    <img width="231ptx" height="231ptx" th:src="@{{pizza.getImage()}}"/>-->
+<!--    <img width="308px" height="308px" th:src="@{${pizza.get().image}} "/>-->
+    <img width="308px" height="308px" th:src="${pizza.image}"/>
 </div>
 
-<!--    <a th:href="@{/pizzas/{id}(id=${pizzas.getId()})}" th:text="${pizzas.getImage()}">user</a>-->
-
-<!--    <p th:text="${image}"></p>-->
-
-<!--    <p th:text="Привет"></p>-->
-<!--    <p th:text=#pizza.id></p>-->
-
-<!--<form th:object="${pizza}" th:field="*{image}" th:id="image">-->
-<!--&lt;!&ndash;    <p th:text="*{System.out.printnl(pizza.image)}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;    <p th:text="*{pizza.image}"></p>&ndash;&gt;-->
-<!--    <p th:text="*{image}"></p>-->
-<!--    <p th:text="*{id}"></p>-->
-<!--</form>-->
-<form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}" class="form">
-<!--    <input type="hidden" th:field="*{image}" id="image">-->
-<!--    <input th:field="*{image}" id="image">-->
-<!--    <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{${'~' + image}}"/>-->
-<!--    <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{*{image}"/>-->
-
-<!--    <img width="231ptx" height="231ptx" th:src="@{${pizza.getImage()}}"/>-->
-
-    <!--        <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{'~' + image}"/>-->
-<!--        <img width="231ptx" height="231ptx" th:field="*{image}" th:src="@{'~' + image}"/>-->
-<!--        <img width="231ptx" height="231ptx" th:src="@{image}"/>-->
-
-    <!--    <div>-->
-<!--        <img width="231ptx" height="231ptx" th:src="@{th:field=${image}}"/>-->
-<!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080/'+image}"/>&ndash;&gt;-->
-<!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080'+*{pizza.image}}"/>&ndash;&gt;-->
-<!--&lt;!&ndash;        <img width="231ptx" height="231ptx" th:src="@{'localhost:8080'+@{image}}"/>&ndash;&gt;-->
-<!--    </div>-->
+<div style="margin-left: 20pt; font-size: 18pt; margin-bottom: 10pt; text-align: right">
+<form th:method="POST" th:action="@{/pizzas/create}"
+                th:object="${pizza}" class="form" style="margin-top: -42pt">
     <input type="hidden" th:field="*{id}" id="id"/><br/>
+    <input type="hidden" th:field="*{image}" id="image"/><br/>
+<!--    <input th:field="*{image}" id="image"/><br/>-->
     <label for="name">Name</label>
-    <input th:field="*{name}" id="name"/><br/>
+    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{name}" id="name"/><br/>
     <label for="size">Size</label>
-    <input style="margin-top: 10pt;" th:field="*{size}" id="size"/><br/>
+    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{size}" id="size"/><br/>
     <label for="key_ingredients">Ingredients</label>
-    <input style="margin-top: 10pt;"th:field="*{key_ingredients}" id="key_ingredients"/><br/>
+    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{key_ingredients}" id="key_ingredients"/><br/>
     <label for="price">Price</label>
-    <input style="margin-top: 10pt;"th:field="*{price}" id="price"/><br/>
+    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{price}" id="price"/><br/>
     <label for="cafe">Cafe</label>
-    <input style="margin-top: 10pt;"th:field="*{cafe}" id="cafe"/><br/>
-    <td>
-        <br/>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-    </td>
+    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{cafe}" id="cafe"/><br/>
+    <div style="display: flex; margin-top: 20pt; margin-left: 20pt">
+        <td>
+            <br/>
+                <div>
+                    <button type="submit" style="padding: 10pt; font-size: 20pt;
+                     border-radius: 10pt; width: 100pt">Submit</button>
+                </div>
+        </td>
+        <td>
+            <form th:action="@{/pizzas}">
+                <div>
+                    <button type="submit" style="margin-left: 20pt; padding: 10pt;
+                     width: 100pt; border-radius: 10pt; font-size: 20pt" >Back</button>
+                </div>
+            </form>
+        </td>
+    </div>
 </form>
-<br/>
-<a href="/pizzas">Back</a>
+</div>
+</container>
 </body>
 </html>
