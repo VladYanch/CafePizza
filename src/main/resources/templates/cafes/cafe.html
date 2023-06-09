@@ -11,18 +11,25 @@
         <input type="hidden" th:field="*{id}" id="id"/><br/>
         <label for="name">Name</label>
         <input th:field="*{name}" id="name"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         <label for="city">City</label>
         <input th:field="*{city}" id="city"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
         <label for="address">Address</label>
         <input th:field="*{address}" id="address"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
         <label for="email">E-mail</label>
         <input th:field="*{email}" id="email"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         <label for="phone">Phone</label>
         <input th:field="*{phone}" id="phone"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
         <label for="open">Open</label>
         <input th:field="*{open}" id="open"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('open')}" th:errors="*{open}"></div>
         <label for="close">Close</label>
         <input th:field="*{close}" id="close"/><br/>
+        <div class="error" th:if="${#fields.hasErrors('close')}" th:errors="*{close}"></div>
         <td>
         <br/>
              <div>

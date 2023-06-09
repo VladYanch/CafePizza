@@ -2,9 +2,11 @@ package com.example.cafepizza.controller;
 
 import com.example.cafepizza.model.Cafe;
 import com.example.cafepizza.service.CafeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,11 +36,10 @@ public class CafeController {
         return "redirect:/cafes";
     }
     @GetMapping(value = "/new")
-    public String addCafe(@ModelAttribute ("cafe") Cafe cafe) {
-        return "cafes/cafe";
-    }
+    public String addCafe(@ModelAttribute ("cafe") Cafe cafe) { return "cafes/cafe";}
     @PostMapping("/create")
-    public String createCafe(@ModelAttribute ("cafe") Cafe cafe) {
+    public String createCafe(@ModelAttribute ("cafe") @Valid Cafe cafe, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "cafes/cafe";
         service.addOrUpdate(cafe);
         return "redirect:/cafes";
     }
