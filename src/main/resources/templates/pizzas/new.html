@@ -3,30 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Pizza</title>
+  <link rel="stylesheet" href="/style.css"/>
 </head>
 <body style="margin: 20pt;">
 
 <div style="font-size: 30pt; margin-left: 180pt; margin-bottom: 20pt" th:text="${'New Pizza'}"></div>
-<!--<div style="font-size: 30pt; margin-left: 180pt; margin-bottom: 20pt"-->
-<!--     th:text="New Pizza" th:if="${pizza.name.equals('New Pizza')}"></div>-->
-<!--    <p th:text="${pizza.name}"></p>-->
-<!--    <p th:text="${pizza.name.equals('New Pizza')}" th:if="${pizza.name.equals('New Pizza')}"></p>-->
 
 <container class="hero" style="display: flex; height: 308px">
   <div>
-<!--    <img width="308px" height="308px" th:if="${pizza.name.equals('New Pizza')}" th:src="@{/img/marherita.jpeg}"/>-->
     <img width="308px" height="308px" th:src="@{/img/marherita.jpeg}"/>
   </div>
 
   <div style="margin-left: 20pt; font-size: 18pt; margin-bottom: 10pt; text-align: right">
-    <form th:method="POST" th:action="@{/pizzas/create}"
-          th:object="${pizza}" class="form" style="margin-top: -42pt">
+    <form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}" class="form" style="margin-top: -42pt">
       <input type="hidden" th:field="*{id}" id="id"/><br/>
       <input type="hidden" th:field="*{image}" id="image"/><br/>
-      <!--    <input th:field="*{image}" id="image"/><br/>-->
       <label for="name">Name</label>
       <input style="margin-top: 10pt; font-size: 16pt" th:field="*{name}" id="name"/><br/>
-      <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+      <div class="errors" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
       <label for="size">Size</label>
       <input style="margin-top: 10pt; font-size: 16pt" th:field="*{size}" id="size"/><br/>
       <div class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></div>
@@ -38,23 +32,17 @@
       <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
       <label for="cafe">Cafe</label>
       <input style="margin-top: 10pt; font-size: 16pt" th:field="*{cafe}" id="cafe"/><br/>
-<!--      //todo сделать выпадающий список-->
       <div style="display: flex; margin-top: 20pt; margin-left: 20pt">
-        <td>
-          <br/>
-          <div>
             <button type="submit" style="padding: 10pt; font-size: 20pt;
                      border-radius: 10pt; width: 100pt">Submit</button>
-          </div>
-        </td>
       </div>
     </form>
-    <form th:action="@{/pizzas}" th:method="GET">
-      <div>
-        <button type="submit" style="margin-left: 20pt; padding: 10pt;
-                     width: 100pt; border-radius: 10pt; font-size: 20pt" >Back</button>
-      </div>
-    </form>
+        <div style="margin-top: -61px">
+              <form th:action="@{/pizzas}" th:method="GET">
+                <button href="/pizzas" style="margin-left: 20pt; padding: 10pt;
+                 width: 100pt; border-radius: 10pt; font-size: 20pt" >Back</button>
+              </form>
+        </div>
   </div>
 </container>
 </body>

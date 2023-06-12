@@ -28,18 +28,7 @@
     <tr th:each="cafes, iter : ${cafes}">
         <td th:text="${iter.index}+1"></td>
         <td th:text="${cafes.id}"></td>
-<!--        <a href="@(/cafe/{id}(id=${cafe.getId()}))" td th:text="${cafe.id}"></a>-->
-<!--        <td th:text="${cafes.name}"></td>-->
-<!--        <td th:href="${cafes.name}">${cafes.name}</td>-->
-
-<!--        Последние изменения-->
-        <td>
-<!--            <form method="GET" th:action="@{/cafes/menu}" th:object="${cafe}">-->
-<!--                <a href="cafes/menu" th:text="${cafes.name}"></a>-->
-                <a th:href="@{cafes/show(id=${cafes.id})}" th:text="${cafes.name}"
-                            method="GET" ></a>
-<!--            </form>-->
-        </td>
+        <td> <a th:href="@{cafes/show(id=${cafes.id})}" th:text="${cafes.name}" method="GET" ></a></td>
         <td th:text="${cafes.city}"></td>
         <td th:text="${cafes.address}"></td>
         <td th:text="${cafes.email}"></td>

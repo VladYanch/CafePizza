@@ -15,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @SessionAttributes("editPizza")
 public class PizzaController {
     private final PizzaService service;
+    private final PizzaService serviceCafe;
     @Autowired
-    public PizzaController(PizzaService service) {
+    public PizzaController(PizzaService service, PizzaService serviceCafe) {
         this.service = service;
+        this.serviceCafe = serviceCafe;
     }
     @GetMapping()
     public String index(Model model) {
@@ -37,13 +39,16 @@ public class PizzaController {
         return "pizzas/new";
     }
     @PostMapping("/create")
-    public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "pizzas/new";
+    public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(pizza);
+            return "pizzas/pizza";
+        }
         service.addOrUpdate(pizza);
         return "redirect:/pizzas";
     }
     @GetMapping(value = "/edit")
-    public String findPizza(@RequestParam ("id") Long id, Model model ) {
+    public String findPizza(@RequestParam ("id") Long id, Model model) {
         model.addAttribute("pizza",service.findById(id).get());
         return "pizzas/pizza";
     }

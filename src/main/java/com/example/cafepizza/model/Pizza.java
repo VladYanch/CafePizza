@@ -22,7 +22,7 @@ public class Pizza {
     private Long id;
 
     @NotBlank(message = "{validation.pizza.name}")
-    @Length(max = 20, message = "{validation.pizza.name.length}")
+    @Length(max = 25, message = "{validation.pizza.name.length}")
     private String name;
 
     @NotBlank(message = "{validation.pizza.size}")
@@ -33,18 +33,19 @@ public class Pizza {
     @Length(max = 50, message = "{validation.pizza.key_ingredients.length}")
     private String key_ingredients;
 
-//    @NotBlank(message = "{validation.pizza.price}")
 //    @Length(max = 6, message = "{validation.pizza.price.length}")
+//    @NotBlank(message = "{validation.pizza.price}")
 
-    @Min(value = 0, message = "{validation.pizza.price.value}")
+    @Min(value = 0, message = "{validation.pizza.price}")
     @Max(value = 1000, message = "{validation.pizza.price.value}")
     private double price;
 
-//    @NotBlank(message = "{validation.pizza.image}")
-//    @Length(max = 20, message = "{validation.pizza.image.length}")
+    @NotBlank(message = "{validation.pizza.image}")
+    @Length(max = 25, message = "{validation.pizza.image.length}")
     private String image;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cafe_id")
+//    @Min(value = 1, message = "{validation.pizza.price.value}")
     private Cafe cafe;
 }
