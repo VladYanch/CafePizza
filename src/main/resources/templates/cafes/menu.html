@@ -3,18 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Cafe</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 <h2>Cafe</h2>
-
-<!--<form th:method="GET" th:action="@{/cafes/menu}" th:object="${cafe}">-->
-<!--<p>Привет!</p>-->
-<!--<p th:text="${editCafe.name}"></p>-->
-<!--<p th:text="${cafe.name}"></p>-->
-<!--<p th:text="${cafe.getName()}"></p>-->
-
-<!--<p th:text="${cafe.getName()}">VALUE</p>-->
-<!--</form>-->
 
 <form th:method="POST" th:action="@{/cafes/menu}" th:object="${cafe}" class="form">
 <!--    <p th:field="*{name}" id="name">name</p>-->
@@ -55,9 +47,7 @@
     </thead>
     <tbody>
     <tr th:each="pizzas, iter : ${pizzas}">
-        <!--        <td th:src="${static/img/marherita.jpeg}"></td>-->
         <td>
-<!--            <a th:href="@{/pizzas/{id}(id=${pizzas.getId()})}" th:text="${pizzas.getImage()}">user</a>-->
             <img width="154ptx" height="154ptx" th:src="${pizzas.image}"/>
         </td>
         <td th:text="${iter.index}+1"></td>

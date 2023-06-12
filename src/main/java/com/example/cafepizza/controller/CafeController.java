@@ -51,8 +51,9 @@ public class CafeController {
 
     @GetMapping(value = "/show")
     public String showCafeWithMenu(@RequestParam ("id") Long id, Model model ) {
-        model.addAttribute("cafe",service.findById(id).get());
-        model.addAttribute("pizzas",service.menuById(id));
+        Cafe cafeChoice = service.findById(id).get();
+        model.addAttribute("cafe",cafeChoice);
+        model.addAttribute("pizzas",cafeChoice.getPizza_menu()); //
         return "cafes/menu";
     }
 //    @GetMapping("/cafes/{id}")
@@ -61,13 +62,4 @@ public class CafeController {
 ////        return "CafeFindId";
 //        return "сafe";
 //    }
-
-//    @PostMapping("/cafes/{id}")
-//    public String editId(Long id, Model model) {
-//        model.addAttribute("cafes", service.findById(id));
-////        model.addAttribute("cafes", service.findById(1));
-////        return "CafeFindId";
-//        return "сafe";
-//    }
-
 }

@@ -11,6 +11,4 @@ public interface CafeService {
     void deleteCafe(Long id);
     Optional<Cafe> findById(Long id);
     void addOrUpdate(Cafe cafe);
-
-    List<Pizza> menuById(Long id);
 }

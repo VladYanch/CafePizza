@@ -11,24 +11,19 @@ import java.util.Optional;
 
 @Service
 public class PizzaServiceImpl implements PizzaService {
-
     private final PizzaRepository repository;
-
     @Autowired
     public PizzaServiceImpl(PizzaRepository repository) {
         this.repository = repository;
     }
-
     @Override
     public List<Pizza> findAll() {return repository.findAll();}
     @Override
     public void deletePizza(Long id) { repository.deleteById(id);}
-
     @Override
     public Optional<Pizza> findById(Long id) {
         return repository.findById(id);
     }
-
     @Override
     public void addOrUpdate(Pizza pizza) { repository.save(pizza);}
 }

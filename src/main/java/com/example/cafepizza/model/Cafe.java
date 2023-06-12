@@ -51,7 +51,7 @@ public class Cafe {
     @Length(max = 5, message = "{validation.cafe.close.length}")
     private String close;
 
-    @OneToMany(mappedBy = "cafe",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cafe",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<Pizza> pizza_menu = new ArrayList<>();
 
 }

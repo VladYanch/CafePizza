@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @Service
 public class CafeServiceImpl implements CafeService {
-
     private final CafeRepository repository;
     private final PizzaRepository pizzaRepository;
     @Autowired
@@ -30,10 +29,4 @@ public class CafeServiceImpl implements CafeService {
         return repository.findById(id);
     }
     public void addOrUpdate(Cafe cafe) { repository.save(cafe);}
-
-    @Override
-    public List<Pizza> menuById(Long id) {
-        return pizzaRepository.findAll().stream().filter(x-> x.getCafe().getId().equals(id)).toList();
-//        return pizzaRepository.findAll();
-    }
 }

@@ -4,6 +4,8 @@
     <title>List of Pizza</title>
 
     <link rel="stylesheet" href="/style.css"/>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">-->
+
 </head>
 <body>
 <div class="header">
@@ -76,7 +78,8 @@
     <td>
         <br/>
         <div>
-            <form th:action="@{/pizzas/new}" th:method="GET">
+<!--        <div th:if="${user}">-->
+            <form  th:action="@{/pizzas/new}" th:method="GET">
                 <button type="submit" style="padding: 5pt; font-size: 12pt;
                          border-radius: 10pt; width: 60pt">New</button>
             </form>
