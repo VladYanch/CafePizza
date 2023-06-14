@@ -1,6 +1,6 @@
 insert into cafe (name, city, address, phone, email, open, close)
-values ('Losteria Dortmund', 'Dortmund', 'Friedensplatz 8', '+49 0231 58445524','dortmund@losteria.de','9:00','20:00'),
-       ('Milano im Westend','Munster','Wilhelmstr. 26' , '+49 0251 25962555','mail@milano-westend.de','9:00','21:00'),
+values ('Losteria Dortmund', 'Dortmund', 'Friedensplatz 8', '+49 0231 58445524','dortmund@losteria.de','09:00','20:00'),
+       ('Milano im Westend','Munster','Wilhelmstr. 26' , '+49 0251 25962555','mail@milano-westend.de','09:00','21:00'),
        ('Bella Mia','Waltrop','Dortmunderstr. 132' , '+49 0230 97820386','info@bella-mia.de','10:00','22:00');
 
 insert into pizza (name, size, price, key_ingredients, cafe_id, image)

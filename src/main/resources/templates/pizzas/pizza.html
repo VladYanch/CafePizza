@@ -5,35 +5,62 @@
     <link rel="stylesheet" href="/style.css"/>
     <title>Pizza</title>
 </head>
-<body style="margin: 20pt;">
+<body>
+<header class="header">
+    <div class="container header-container">
+        <a href="" class="header-logo link">Cafe<span class="logo-accent">Pizza</span></a>
+        <nav class="header-nav">
+            <ul class="header-list list">
+                <li class="header-item"><a href="/" class="header-link link current">Home</a></li>
+                <li class="header-item"><a th:href="@{/cafes}" class="header-link link">Cafe</a></li>
+                <li class="header-item"><a th:href="@{/pizzas}" class="header-link link">Pizza</a></li>
+            </ul>
+        </nav>
+    </div>
 
-<div style="font-size: 30pt; margin-left: 180pt; margin-bottom: 20pt" th:text="${pizza.name}"></div>
+    <div class="login">
+        <div class="header-item"><a href="Login" class="login">Login</a></div>
+    </div>
+</header>
 
-<container class="hero" style="display: flex; height: 308px">
+<main>
+    <section class="pizza_hero">
+<div style="font-size: 30pt; text-align: center; margin-bottom: 20pt" th:text="${pizza.name}"></div>
+
+<container class="pizza_edit_hero">
 <div>
     <img width="308px" height="308px" th:src="${pizza.image}"/>
 </div>
 
 <div style="margin-left: 20pt; font-size: 18pt; margin-bottom: 10pt; text-align: right">
-<!--<form th:method="PATCH" th:action="@{/pizzas/create}" th:object="${pizza}" class="form" style="margin-top: -42pt">-->
 
 <form th:method="POST" th:action="@{/pizzas/create}" th:object="${pizza}" class="form" style="margin-top: -42pt">
     <input type="hidden" th:field="*{id}" id="id"/><br/>
     <input type="hidden" th:field="*{image}" id="image"/><br/>
     <label for="name">Name</label>
-    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{name}" id="name"/><br/>
+    <input class="input_pizza" th:field="*{name}" id="name"/><br/>
     <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
     <label for="size">Size</label>
-    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{size}" id="size"/><br/>
+    <input class="input_pizza" th:field="*{size}" id="size"/><br/>
     <div class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></div>
     <label for="key_ingredients">Ingredients</label>
-    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{key_ingredients}" id="key_ingredients"/><br/>
+    <input class="input_pizza" th:field="*{key_ingredients}" id="key_ingredients"/><br/>
     <div class="error" th:if="${#fields.hasErrors('key_ingredients')}" th:errors="*{key_ingredients}"></div>
     <label for="price">Price</label>
-    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{price}" id="price"/><br/>
+    <input class="input_pizza" th:field="*{price}" id="price"/><br/>
     <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
     <label for="cafe">Cafe</label>
-    <input style="margin-top: 10pt; font-size: 16pt" th:field="*{cafe}" id="cafe"/><br/>
+    <input class="input_pizza" th:field="*{cafe}" id="cafe"/><br/>
+    <div>
+        <label for="cafe">Select Cafe: </label>
+        <select th:field="*{cafe}"  >
+            <option th:each="cafe : ${cafes}"
+                    th:value="${cafe.id}"
+                    th:text="${cafe.name}"
+                    id="cafe">
+            </option>
+        </select>
+    </div>
     <div style="display: flex; margin-top: 20pt; margin-left: 20pt">
             <button type="submit" style="padding: 10pt; font-size: 20pt;
              border-radius: 10pt; width: 100pt">Submit</button>
@@ -47,5 +74,12 @@
     </div>
 </div>
 </container>
+</section>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <a href="" class="footer-logo link">Cafe<span class="footer-logo-accent">Pizza</span></a>
+    </div>
+</footer>
 </body>
 </html>

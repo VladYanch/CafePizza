@@ -33,9 +33,10 @@ public class PizzaController {
         return "redirect:/pizzas";
     }
     @GetMapping(value = "/new")
-    public String addPizza(@ModelAttribute ("pizza") Pizza pizza) {
+    public String addPizza(@ModelAttribute ("pizza") Pizza pizza, Model model) {
         pizza.setImage("/img/marherita.jpeg");
         pizza.setName("New Pizza");
+        model.addAttribute("cafes", serviceCafe.findAll());
         return "pizzas/new";
     }
     @PostMapping("/create")
@@ -50,6 +51,7 @@ public class PizzaController {
     @GetMapping(value = "/edit")
     public String findPizza(@RequestParam ("id") Long id, Model model) {
         model.addAttribute("pizza",service.findById(id).get());
+        model.addAttribute("cafes",serviceCafe.findAll());
         return "pizzas/pizza";
     }
 }

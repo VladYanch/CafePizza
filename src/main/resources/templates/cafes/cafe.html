@@ -6,8 +6,26 @@
     <title>Cafe</title>
 </head>
 <body>
-<h2>Cafe</h2>
+<!--<h2>Cafe</h2>-->
 
+<header class="header">
+        <div class="container header-container">
+                <a href="" class="header-logo link">Cafe<span class="logo-accent">Pizza</span></a>
+                <nav class="header-nav">
+                        <ul class="header-list list">
+                                <li class="header-item"><a href="/" class="header-link link current">Home</a></li>
+                                <li class="header-item"><a th:href="@{/cafes}" class="header-link link">Cafe</a></li>
+                                <li class="header-item"><a th:href="@{/pizzas}" class="header-link link">Pizza</a></li>
+                        </ul>
+                </nav>
+        </div>
+
+        <div class="login">
+                <div class="header-item"><a href="Login" class="login">Login</a></div>
+        </div>
+</header>
+<main>
+<section class="cafes_hero cafe_edit_body">
 <form th:method="POST" th:action="@{/cafes/create}" th:object="${cafe}" class="form">
         <input type="hidden" th:field="*{id}" id="id"/><br/>
         <label for="name">Name</label>
@@ -31,14 +49,32 @@
         <label for="close">Close</label>
         <input th:field="*{close}" id="close"/><br/>
         <div class="error" th:if="${#fields.hasErrors('close')}" th:errors="*{close}"></div>
+<div class="cafe_btn">
         <td>
         <br/>
-             <div>
-                <button type="submit">Submit</button>
-             </div>
+                <div>
+                        <form  th:action="@{/cafes/new}" th:method="GET">
+                                <button type="submit" style="padding: 5pt; font-size: 12pt;
+                                        border-radius: 10pt; width: 60pt">Submit</button>
+                        </form>
+                </div>
         </td>
+        <td>
+                <form th:action="@{/cafes}" th:method="GET">
+                        <button type="submit" style="margin-left: 20pt; padding: 5pt;
+             width: 60pt; border-radius: 10pt; font-size: 12pt" >Back</button>
+                </form>
+        </td>
+</div>
 </form>
-<br/>
-<a href="/cafes">Back</a>
-</body>
+<!--<br/>-->
+<!--<a href="/cafes">Back</a>-->
+<!--</body>-->
+</section>
+</main>
+<footer class="footer">
+        <div class="footer-container">
+                <a href="" class="footer-logo link">Cafe<span class="footer-logo-accent">Pizza</span></a>
+        </div>
+</footer>
 </html>

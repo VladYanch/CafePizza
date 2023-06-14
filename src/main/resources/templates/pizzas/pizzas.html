@@ -8,11 +8,25 @@
 
 </head>
 <body>
-<div class="header">
-    <h2>
-        List of Pizza!
-    </h2>
-</div>
+<header class="header">
+    <div class="container header-container">
+      <a href="" class="header-logo link">Cafe<span class="logo-accent">Pizza</span></a>
+      <nav class="header-nav">
+        <ul class="header-list list">
+          <li class="header-item"><a href="/" class="header-link link current">Home</a></li>
+          <li class="header-item"><a th:href="@{/cafes}" class="header-link link">Cafe</a></li>
+          <li class="header-item"><a th:href="@{/pizzas}" class="header-link link">Pizza</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="login">
+      <div class="header-item"><a href="Login" class="login">Login</a></div>
+    </div>
+</header>
+
+<main>
+    <section class="pizzas_hero">
 
 <table>
     <thead>
@@ -92,8 +106,12 @@
         </form>
     </td>
 </div>
-
-<!--<br/>-->
-<!--<a href="/pizzas/new">new Pizza</a>-->
+</section>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <a href="" class="footer-logo link">Cafe<span class="footer-logo-accent">Pizza</span></a>
+    </div>
+</footer>
 </body>
 </html>
