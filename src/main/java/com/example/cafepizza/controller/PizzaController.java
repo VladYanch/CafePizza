@@ -43,10 +43,10 @@ public class PizzaController {
         return "pizzas/new";
     }
     @PostMapping("/create")
+//    public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult,@ModelAttribute ("cafes") Cafe cafe, Model model) {
     public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute(pizza);
-//            model.addAttribute(cafe);
             return "pizzas/pizza";
         }
         service.addOrUpdate(pizza);
@@ -55,7 +55,8 @@ public class PizzaController {
     @GetMapping(value = "/edit")
     public String findPizza(@RequestParam ("id") Long id, Model model) {
         model.addAttribute("pizza",service.findById(id).get());
-        model.addAttribute("cafes",serviceCafe.findAll());
+//        model.addAttribute("cafes",serviceCafe.findById(id).get());
+//        model.addAttribute("cafes",serviceCafe.findAll());
         return "pizzas/pizza";
     }
 }
