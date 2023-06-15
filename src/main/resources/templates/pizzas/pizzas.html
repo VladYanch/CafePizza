@@ -8,6 +8,7 @@
 
 </head>
 <body>
+<div class="wrapper">
 <header class="header">
     <div class="container header-container">
       <a href="" class="header-logo link">Cafe<span class="logo-accent">Pizza</span></a>
@@ -25,15 +26,14 @@
     </div>
 </header>
 
-<main>
-    <section class="pizzas_hero">
-
+<main class="main pizzas_hero">
+    <section>
 <table>
     <thead>
     <tr>
         <th>Pic</th>
         <th>№</th>
-        <th>Id</th>
+<!--        <th>Id</th>-->
         <th>Name</th>
         <th>Size</th>
         <th>Ingredients</th>
@@ -47,7 +47,7 @@
             <img width="77ptx" height="77ptx" th:src="${pizzas.image}"/>
         </td>
         <td th:text="${iter.index}+1"></td>
-        <td th:text="${pizzas.id}"></td>
+<!--        <td th:text="${pizzas.id}"></td>-->
         <td th:text="${pizzas.name}"></td>
         <td th:text="${pizzas.size}"></td>
         <td th:text="${pizzas.key_ingredients}"></td>
@@ -88,7 +88,7 @@
 </table>
 
 <br/>
-<div style="display: flex; margin-top: 2pt; margin-left: 20pt">
+<div class="pizza_btn_cont">
     <td>
         <br/>
         <div>
@@ -108,10 +108,11 @@
 </div>
 </section>
 </main>
-<footer class="footer">
+<footer class="footer footer_pizzas">
     <div class="footer-container">
         <a href="" class="footer-logo link">Cafe<span class="footer-logo-accent">Pizza</span></a>
     </div>
 </footer>
+</div>
 </body>
 </html>

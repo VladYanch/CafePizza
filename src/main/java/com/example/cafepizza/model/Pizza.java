@@ -48,4 +48,5 @@ public class Pizza {
     @JoinColumn(name = "cafe_id")
 //    @Min(value = 1, message = "{validation.pizza.price.value}")
     private Cafe cafe;
+
 }

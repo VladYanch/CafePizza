@@ -1,6 +1,8 @@
 package com.example.cafepizza.controller;
 
+import com.example.cafepizza.model.Cafe;
 import com.example.cafepizza.model.Pizza;
+import com.example.cafepizza.service.CafeService;
 import com.example.cafepizza.service.PizzaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @SessionAttributes("editPizza")
 public class PizzaController {
     private final PizzaService service;
-    private final PizzaService serviceCafe;
+    private final CafeService serviceCafe;
     @Autowired
-    public PizzaController(PizzaService service, PizzaService serviceCafe) {
+    public PizzaController(PizzaService service, CafeService serviceCafe) {
         this.service = service;
         this.serviceCafe = serviceCafe;
     }
+
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("pizzas", service.findAll());
@@ -43,6 +46,7 @@ public class PizzaController {
     public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute(pizza);
+//            model.addAttribute(cafe);
             return "pizzas/pizza";
         }
         service.addOrUpdate(pizza);
