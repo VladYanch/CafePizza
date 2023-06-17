@@ -14,11 +14,13 @@ values ('Pizza Romano', 'Standard', 6.70, 'Tomato sauce, mozzarella, rosemary, s
        ('Pizza Siciliano', 'XL', 7.20, 'Tomato sauce, Tomato, mozzarella, onions, basil',2,'/img/siciliano.jpeg'),
        ('Pizza Meat Confugi', 'Family', 14.00, 'Tomato sauce, veal, ham, onions, mushrooms',3,'/img/meatconfugi.jpeg');
 
--- insert into pizza (name, size, price, key_ingredients, cafe_id)
--- values ('Pizza Romano', 'Standard', 6.70, 'Tomato sauce, mozzarella, rosemary, semolina',1),
---        ('Quattro Formaggi', 'Large', 11.30, 'Mozzarella, gorgonzola, fontina, parmiggiano',2),
---        ('Pizza Calzone', 'Standard', 7.65, 'Tomato sauce, pepperoni, ricotta',3),
---        ('Pizza Hawaii', 'Family', 13.80, 'Tomato sauce, bacon, mozzarella, pineapple',1),
---        ('Pizza Zucchini', 'Lage', 8.30, 'Tomato sauce, zucchini, onions',2),
---        ('Pizza Carbonara', 'Lage', 9.29, 'Tomato sauce, bacon, garlic, onions, mushrooms',3),
---        ('Pizza Napoletana', 'XL', 8.49, 'Tomato sauce, mozzarella, basil',1);
+
+-- 1
+insert into user (username, password, role)
+values ('admin','$2a$10$noBvg9RMquV2dx2fUtdd3OHUYPVuQlklMJrbkQWtvp9uYP26hkuzm','ROLE_ADMIN'),
+       ('user','$2a$10$noBvg9RMquV2dx2fUtdd3OHUYPVuQlklMJrbkQWtvp9uYP26hkuzm','ROLE_USER');
+
+-- password
+-- insert into user (username, password, role)
+-- values ('admin','$2a$10$7v0H6Wv9wHRIUVxxmCRdd.L2wZiXNsr5Us1HbgFtc567Hc2DNs1Ye','ROLE_ADMIN'),
+--        ('user','$2a$10$7v0H6Wv9wHRIUVxxmCRdd.L2wZiXNsr5Us1HbgFtc567Hc2DNs1Ye','ROLE_USER');

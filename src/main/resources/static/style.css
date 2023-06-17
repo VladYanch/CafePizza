@@ -373,6 +373,13 @@ h2 {
     z-index: 100;
 }
 
+/*. pizzas_btn_row {*/
+/*    padding: 2pt;*/
+/*    font-size: 20pt;*/
+/*    border-radius: 2pt;*/
+/*    width: 20pt;*/
+/*}*/
+
 /*---------------Cafes----------------*/
 
 .cafes_hero {
@@ -415,4 +422,28 @@ h2 {
 /*---------------Menu----------------*/
 .cafe_requisites {
     align-items: center;
+}
+/*---------------Login----------------*/
+.login_body {
+    width: 450px;
+    font-size: 22pt;
+    /*color: wheat;*/
+    color: dodgerblue;
+    margin-left: 300px;
+    margin-bottom: 10pt;
+    text-align: right;
+}
+
+.login_btn {
+    padding: 5pt;
+    font-size: 18pt;
+    border-radius: 10pt;
+    width: 80pt;
+}
+
+.login_error {
+    margin-top: 10px;
+    font-size: 28px;
+    color: #ee1515;
+    text-align: center;
 }
