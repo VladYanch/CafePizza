@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">-->
 <head>
   <title>Cafe Pizza</title>
   <link rel="stylesheet" href="/style.css"/>
@@ -19,7 +20,7 @@
     </div>
 
     <div class="login">
-      <div class="header-item"><a href="Login" class="login">Login</a></div>
+      <div class="header-item"><a th:href="@{/login}" class="login">Login</a></div>
     </div>
 
   </header>
@@ -29,11 +30,11 @@
       <h1 class="hero-title">Cafe Pizza</h1>
       <div class="hero_buttons" style="display: flex">
         <form th:action="@{/cafes}" th:method="GET">
-          <button href="/cafes" style="margin-left: 20pt; padding: 10pt;
+          <button th:href="@{/cafes}" style="margin-left: 20pt; padding: 10pt;
                    width: 100pt; border-radius: 10pt; font-size: 20pt" >Cafes</button>
         </form>
         <form th:action="@{/pizzas}" th:method="GET">
-          <button href="/pizzas" style="margin-left: 20pt; padding: 10pt;
+          <button th:href="@{pizzas}" style="margin-left: 20pt; padding: 10pt;
                    width: 100pt; border-radius: 10pt; font-size: 20pt" >Pizzas</button>
         </form>
       </div>

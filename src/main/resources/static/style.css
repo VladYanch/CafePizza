@@ -166,10 +166,12 @@ h2 {
     margin-bottom: 5pt;
     /*margin-left: 200pt;*/
     font-size: 16pt;
+    /*text-align: right;*/
 }
 
 .cafe_menu_field {
     margin-left: 20pt;
+    /*text-align: left;*/
 }
 
 
@@ -183,7 +185,7 @@ h2 {
                     rgba(47, 48, 58, 0.4),
                     rgba(47, 48, 58, 0.4)
             ),
-            url("../img/hero.jpg");
+            url("/img/hero.jpg");
      background-repeat: no-repeat;
     background-size:cover;
     height:490px;
@@ -228,7 +230,7 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
 }
 
@@ -291,7 +293,7 @@ h2 {
                     rgba(47, 48, 58, 0.4),
                     rgba(47, 48, 58, 0.4)
             ),
-            url("../img/pizzas.jpg");
+            url("/img/pizzas.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     height:440px;
@@ -311,7 +313,7 @@ h2 {
                     rgba(47, 48, 58, 0.4),
                     rgba(47, 48, 58, 0.4)
             ),
-            url("../img/pizza_oven.jpg");
+            url("/img/pizza_oven.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     height:440px;
@@ -373,6 +375,13 @@ h2 {
     z-index: 100;
 }
 
+/*. pizzas_btn_row {*/
+/*    padding: 2pt;*/
+/*    font-size: 20pt;*/
+/*    border-radius: 2pt;*/
+/*    width: 20pt;*/
+/*}*/
+
 /*---------------Cafes----------------*/
 
 .cafes_hero {
@@ -382,7 +391,7 @@ h2 {
                     rgba(47, 48, 58, 0.4),
                     rgba(47, 48, 58, 0.4)
             ),
-            url("../img/cafe.jpeg");
+            url("/img/cafe.jpeg");
     background-repeat: no-repeat;
     background-size:cover;
     height:450px;
@@ -415,4 +424,28 @@ h2 {
 /*---------------Menu----------------*/
 .cafe_requisites {
     align-items: center;
+}
+/*---------------Login----------------*/
+.login_body {
+    width: 450px;
+    font-size: 22pt;
+    /*color: wheat;*/
+    color: dodgerblue;
+    margin-left: 300px;
+    margin-bottom: 10pt;
+    text-align: right;
+}
+
+.login_btn {
+    padding: 5pt;
+    font-size: 18pt;
+    border-radius: 10pt;
+    width: 80pt;
+}
+
+.login_error {
+    margin-top: 10px;
+    font-size: 28px;
+    color: #ee1515;
+    text-align: center;
 }

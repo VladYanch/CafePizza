@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">-->
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/style.css"/>
@@ -20,7 +21,7 @@
     </div>
 
     <div class="login">
-        <div class="header-item"><a href="Login" class="login">Login</a></div>
+        <div class="header-item"><a th:href="@{/login}" class="login">Login</a></div>
     </div>
 </header>
 
@@ -49,18 +50,16 @@
     <label for="price">Price</label>
     <input class="input_pizza" th:field="*{price}" id="price"/><br/>
     <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-    <label for="cafe">Cafe</label>
-    <input class="input_pizza" th:field="*{cafe}" id="cafe"/><br/>
-<!--    <div>-->
-<!--        <label for="cafe">Select Cafe: </label>-->
-<!--        <select th:field="*{cafe}"  >-->
-<!--            <option th:each="cafe : ${cafes}"-->
-<!--                    th:value="${cafe}"-->
-<!--                    th:text="${cafe.getName()}"-->
-<!--                    id="cafe">-->
-<!--            </option>-->
-<!--        </select>-->
-<!--    </div>-->
+    <div>
+        <label for="cafe">Cafe</label>
+        <select th:field="*{cafe}" class="input_pizza" style="width: 230px">
+            <option th:each="cafe : ${cafes}"
+                    th:value="${cafe.getId()}"
+                    th:text="${cafe.getName()}"
+                    id="cafe">
+            </option>
+        </select>
+    </div>
     <div class="pizza_btn">
             <button type="submit" class="pizza_btn_style pizza_btn_left">Submit</button>
     </div>

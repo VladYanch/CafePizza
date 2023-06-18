@@ -33,9 +33,6 @@ public class Pizza {
     @Length(max = 50, message = "{validation.pizza.key_ingredients.length}")
     private String key_ingredients;
 
-//    @Length(max = 6, message = "{validation.pizza.price.length}")
-//    @NotBlank(message = "{validation.pizza.price}")
-
     @Min(value = 0, message = "{validation.pizza.price}")
     @Max(value = 1000, message = "{validation.pizza.price.value}")
     private double price;
@@ -46,7 +43,6 @@ public class Pizza {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cafe_id")
-//    @Min(value = 1, message = "{validation.pizza.price.value}")
     private Cafe cafe;
 
 }

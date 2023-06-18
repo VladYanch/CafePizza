@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <title>List of Pizza</title>
 
@@ -22,7 +23,7 @@
     </div>
 
     <div class="login">
-      <div class="header-item"><a href="Login" class="login">Login</a></div>
+      <div class="header-item"><a th:href="@{/login}" class="login">Login</a></div>
     </div>
 </header>
 
@@ -64,7 +65,7 @@
             </form>
         </td>
         <td>
-            <form th:action="@{/pizzas/edit}" th:method="GET">
+            <form th:action="@{/pizzas/edit}" th:method="GET" sec:authorize="hasRole('ROLE_ADMIN')">
                 <div>
                     <input type="hidden" th:value="${pizzas.id}" name="id">
                 </div>
@@ -74,7 +75,7 @@
             </form>
         </td>
         <td>
-            <form th:action="@{/pizzas/delete}" th:method="POST">
+            <form th:action="@{/pizzas/delete}" th:method="POST" sec:authorize="hasRole('ROLE_ADMIN')">
                 <div>
                     <input type="hidden" th:value="${pizzas.id}" name="id">
                 </div>
@@ -88,7 +89,7 @@
 </table>
 
 <br/>
-<div class="pizza_btn_cont">
+<div class="pizza_btn_cont" sec:authorize="hasRole('ROLE_ADMIN')">
     <td>
         <br/>
         <div>

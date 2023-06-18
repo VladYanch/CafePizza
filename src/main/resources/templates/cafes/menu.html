@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Cafe</title>
@@ -20,7 +21,7 @@
     </div>
 
     <div class="login">
-        <div class="header-item"><a href="Login" class="login">Login</a></div>
+        <div class="header-item"><a th:href="@{/login}" class="login">Login</a></div>
     </div>
 </header>
 <main class="main cafes_hero">
@@ -29,12 +30,11 @@
 <form th:method="POST" th:action="@{/cafes/menu}" th:object="${cafe}" class="form">
     <input type="hidden" th:field="*{id}" id="id"/><br/>
      <div style="text-align: center">
+        <tr><span class="cafe_menu">Name:</span></tr>
+         <tr><span class="cafe_menu_field" th:text="*{name}"></span></tr><br/>
 
-        <span class="cafe_menu">Name:</span>
-        <span class="cafe_menu_field" th:text="*{name}"></span><br/>
-
-        <span>City:</span>
-        <span class="cafe_menu_field" th:text="*{city}"></span><br/>
+         <tr><span>City:</span></tr>
+         <tr><span class="cafe_menu_field" th:text="*{city}"></span></tr><br/>
 
 
         <span>Address:</span>
@@ -51,11 +51,11 @@
 
         <span>Close:</span>
         <span th:text="*{close}"></span><br/>
-
+        </tr>
      </div>
 </form>
 </container>
-
+<div>
 <table>
     <thead>
     <tr>
