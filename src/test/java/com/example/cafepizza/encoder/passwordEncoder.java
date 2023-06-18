@@ -1,4 +1,4 @@
-package com.example.cafepizza;
+package com.example.cafepizza.encoder;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

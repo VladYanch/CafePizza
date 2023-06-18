@@ -59,8 +59,7 @@ public class PizzaController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String findPizza(@RequestParam ("id") Long id, Model model) {
         model.addAttribute("pizza",service.findById(id).get());
-//        model.addAttribute("cafes",serviceCafe.findById(id).get());
-//        model.addAttribute("cafes",serviceCafe.findAll());
+        model.addAttribute("cafes",serviceCafe.findAll());
         return "pizzas/pizza";
     }
 }
