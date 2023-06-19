@@ -58,13 +58,11 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/",
-                                "login",
-                                "index",
                                 "/style.css",
                                 "/img/**",
                                 "/error",
-                                "/pizzas/pizzas",
-                                "/cafes/cafes",
+                                "/pizzas",
+                                "/cafes",
                                 "/cafes/menu")
                         .permitAll()
                         .anyRequest()
