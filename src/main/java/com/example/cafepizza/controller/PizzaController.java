@@ -1,5 +1,6 @@
 package com.example.cafepizza.controller;
 
+import com.example.cafepizza.model.Cafe;
 import com.example.cafepizza.model.Pizza;
 import com.example.cafepizza.service.CafeService;
 import com.example.cafepizza.service.PizzaService;
@@ -11,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/pizzas")
@@ -46,10 +49,11 @@ public class PizzaController {
     }
     @PostMapping("/create")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult,@ModelAttribute ("cafes") Cafe cafe, Model model) {
-    public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult, Model model) {
+        public String createPizza(@ModelAttribute ("pizza") @Valid Pizza pizza, BindingResult bindingResult,
+                               Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute(pizza);
+            model.addAttribute("pizza", pizza);
+            model.addAttribute("cafes", serviceCafe.findAll());
             return "pizzas/pizza";
         }
         service.addOrUpdate(pizza);
