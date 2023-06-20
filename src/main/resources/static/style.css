@@ -375,13 +375,6 @@ h2 {
     z-index: 100;
 }
 
-/*. pizzas_btn_row {*/
-/*    padding: 2pt;*/
-/*    font-size: 20pt;*/
-/*    border-radius: 2pt;*/
-/*    width: 20pt;*/
-/*}*/
-
 /*---------------Cafes----------------*/
 
 .cafes_hero {
@@ -394,9 +387,8 @@ h2 {
             url("/img/cafe.jpeg");
     background-repeat: no-repeat;
     background-size:cover;
-    height:450px;
+    height:490px;
     width: auto;
-    padding: 20px;
     font-size: 20px;
     color: #FFFFFF;
     text-align: right;
@@ -418,26 +410,46 @@ h2 {
 
 .cafe_btn {
     display: flex;
-    margin-top: 20pt;
+    margin-top: 10pt;
     justify-content: center;
+}
+
+.cafe_menu_left {
+    text-align: right;
+    margin-right: 5px;
+}
+.cafe_menu_right {
+    text-align: left;
+    margin-left: 5px;
 }
 /*---------------Menu----------------*/
 .cafe_requisites {
     align-items: center;
 }
 /*---------------Login----------------*/
+.login_title {
+    color: orangered;
+    font-size: 44px;
+    padding-top: 60px;
+    text-align: center;
+}
+
 .login_body {
-    width: 450px;
-    font-size: 22pt;
-    /*color: wheat;*/
-    color: dodgerblue;
-    margin-left: 300px;
-    margin-bottom: 10pt;
+    font-size: 30px;
+    color: yellow;
+    margin-bottom: 20px;
     text-align: right;
 }
 
+.login_input {
+    width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 32px;
+}
+
 .login_btn {
-    padding: 5pt;
+    padding: 10pt;
     font-size: 18pt;
     border-radius: 10pt;
     width: 80pt;

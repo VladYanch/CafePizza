@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <!--            xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">-->
 <head>
     <title>Login</title>
@@ -25,16 +26,28 @@
 </header>
 
 <main>
-<!--        <img style="width: auto; height:490px;" th:src="@{/img/hero.jpeg}"/>-->
-    <section style="height:490px; background: lightgray">
+    <section class="hero">
 
-        <form style="display: grid; text-align: center;" th:action="@{login}" method="post">
-        <h3 style="font-size: 25pt; color: dodgerblue; margin-top: 120px" >Login</h3>
+        <div class="login_title" th:inline="text">Hello,
+            <span th:remove="tag" sec:authentication="name"></span>!</div>
+
+
+        <form style="text-align: center" th:action="@{login}" method="post">
+        <h3 style="font-size: 36px; color: yellow; margin-top: 40px; margin-bottom: 15px" >Login</h3>
             <div class="login_body">
-                <div><label> User Name : <input type="text" name="username" class="input_pizza"/> </label></div>
-                <div><label> Password: <input type="password" name="password" class="input_pizza"/> </label></div>
+                <div class="login_input">
+                    <label> User Name : <input type="text" name="username" class="input_pizza"/> </label>
+                    <label> Password: <input type="password" name="password" class="input_pizza"/> </label>
+                </div>
             </div>
-            <div><input class="login_btn" type="submit" value="Sign in"/></div>
+            <div style="display: flex; gap: 40px; justify-content: center">
+                <div><input class="login_btn" type="submit" value="Login"/></div>
+                <div>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Logout" class="login_btn"/>
+                    </form>
+                </div>
+            </div>
         </form>
 
         <div class="login_error" th:if="${param.error}">

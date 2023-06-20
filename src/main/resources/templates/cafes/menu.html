@@ -29,36 +29,32 @@
     <container>
 <form th:method="POST" th:action="@{/cafes/menu}" th:object="${cafe}" class="form">
     <input type="hidden" th:field="*{id}" id="id"/><br/>
-     <div style="text-align: center">
-        <tr><span class="cafe_menu">Name:</span></tr>
-         <tr><span class="cafe_menu_field" th:text="*{name}"></span></tr><br/>
-
-         <tr><span>City:</span></tr>
-         <tr><span class="cafe_menu_field" th:text="*{city}"></span></tr><br/>
-
-
-        <span>Address:</span>
-        <span th:text="*{address}"></span><br/>
-
-        <span>E-mail:</span>
-        <span th:text="*{email}"></span><br/>
-
-        <span>Phone:</span>
-        <span th:text="*{phone}"></span><br/>
-
-        <span>Open:</span>
-        <span th:text="*{open}"></span><br/>
-
-        <span>Close:</span>
-        <span th:text="*{close}"></span><br/>
-        </tr>
+     <div style="display:flex; justify-content: center; margin-bottom: 20px">
+         <div class="cafe_menu_left"  >
+            <p >Name:</p>
+            <p>City:</p>
+            <p>Address:</p>
+            <p>E-mail:</p>
+            <p>Phone:</p>
+            <p>Open:</p>
+            <p>Close:</p>
+         </div>
+         <div class="cafe_menu_right">
+            <p th:text="*{name}"></p>
+            <p th:text="*{city}"></p>
+            <p th:text="*{address}"></p>
+            <p th:text="*{email}"></p>
+            <p th:text="*{phone}"></p>
+            <p th:text="*{open}"></p>
+            <p th:text="*{close}"></p>
+         </div>
      </div>
 </form>
 </container>
-<div>
+<div style="display:flex; justify-content: center">
 <table>
     <thead>
-    <tr>
+    <tr style="text-align: center">
         <th>Pic</th>
         <th>№</th>
 <!--        <th>Id</th>-->
@@ -71,14 +67,14 @@
     <tbody>
     <tr th:each="pizzas, iter : ${pizzas}">
         <td>
-            <img width="154ptx" height="154ptx" th:src="${pizzas.image}"/>
+            <img width="154ptx" height="154ptx" th:src="${pizzas.image}" alt="pizza pic"/>
         </td>
         <td th:text="${iter.index}+1"></td>
 <!--        <td th:text="${pizzas.id}"></td>-->
-        <td th:text="${pizzas.name}"></td>
-        <td th:text="${pizzas.size}"></td>
-        <td th:text="${pizzas.key_ingredients}"></td>
-        <td th:text="${pizzas.price}"></td>
+        <td th:text="${pizzas.name}" style="text-align: left"></td>
+        <td th:text="${pizzas.size}" style="text-align: center"></td>
+        <td th:text="${pizzas.key_ingredients}" style="text-align: left"></td>
+        <td th:text="${pizzas.price}" style="text-align: right"></td>
     </tr>
     </tbody>
 </table>
