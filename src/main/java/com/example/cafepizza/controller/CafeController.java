@@ -40,6 +40,7 @@ public class CafeController {
     @GetMapping(value = "/new")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addCafe(@ModelAttribute ("cafe") Cafe cafe) { return "cafes/cafe";}
+
     @PostMapping("/create")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String createCafe(@ModelAttribute ("cafe") @Valid Cafe cafe, BindingResult bindingResult) {

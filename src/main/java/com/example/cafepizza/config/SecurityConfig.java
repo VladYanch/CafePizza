@@ -63,7 +63,7 @@ public class SecurityConfig {
                                 "/error",
                                 "/pizzas",
                                 "/cafes",
-                                "/cafes/menu")
+                                "/menu")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
