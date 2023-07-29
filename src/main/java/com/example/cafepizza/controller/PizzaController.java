@@ -5,6 +5,7 @@ import com.example.cafepizza.model.Pizza;
 import com.example.cafepizza.service.CafeService;
 import com.example.cafepizza.service.PizzaService;
 import jakarta.validation.Valid;
+//import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,11 +17,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
+//@Log4j2
 @RequestMapping("/pizzas")
 @SessionAttributes("editPizza")
 public class PizzaController {
     private final PizzaService service;
     private final CafeService serviceCafe;
+
+//    private Logger logger = LogManager.getLogManager(PizzaController.class);
+
     @Autowired
     public PizzaController(PizzaService service, CafeService serviceCafe) {
         this.service = service;
