@@ -13,20 +13,21 @@ import java.util.Optional;
 
 @Service
 public class CafeServiceImpl implements CafeService {
-    private final CafeRepository repository;
+    private final CafeRepository cafeRepository;
     private final PizzaRepository pizzaRepository;
     @Autowired
-    public CafeServiceImpl(CafeRepository repository, PizzaRepository pizzaRepository) {
-        this.repository = repository;
+    public CafeServiceImpl(CafeRepository cafeRepository, PizzaRepository pizzaRepository) {
+        this.cafeRepository = cafeRepository;
         this.pizzaRepository = pizzaRepository;
     }
+
     @Override
     public List<Cafe> findAll() {
-        return repository.findAll();
+        return cafeRepository.findAll();
     }
-    public void deleteCafe(Long id) { repository.deleteById(id);}
+    public void deleteCafe(Long id) { cafeRepository.deleteById(id);}
     public Optional<Cafe> findById(Long id) {
-        return repository.findById(id);
+        return cafeRepository.findById(id);
     }
-    public void addOrUpdate(Cafe cafe) { repository.save(cafe);}
+    public void addOrUpdate(Cafe cafe) { cafeRepository.save(cafe);}
 }
