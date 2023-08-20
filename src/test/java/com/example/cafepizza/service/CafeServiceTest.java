@@ -7,27 +7,29 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class CafeServiceTest {
     private static CafeService service;
+    private static CafeRepository cafeRepository;
 //    private final List<CafeService service;
 
-    @BeforeAll
-    void setUp() {
-//        final CafeService service;
-        CafeRepository repository = Mockito.mock(CafeRepository.class);
-        service = new CafeServiceImpl(repository);
-        Mockito(repository).wenn
-
-    }
+//    @BeforeAll
+//    static void setUp() {
+//        final CafeService service = mock(CafeService.class);
+////        CafeRepository repository = Mockito.mock(CafeRepository.class);
+////        service = Mockito.mock(reposito);
+//        when(service.findAll()).thenReturn(new ArrayList<Cafe>());
+//    }
 
     @Test
-    void findAll() {
-        assertEquals(3, .findAll().stream().count());
+    void findAllTest() {
+        assertEquals(3, service.findAll().size());
     }
 
     @Test
