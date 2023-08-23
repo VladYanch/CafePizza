@@ -17,15 +17,15 @@ import static org.mockito.Mockito.*;
 class CafeServiceTest {
     private static CafeService service;
     private static CafeRepository cafeRepository;
-//    private final List<CafeService service;
+//    private final List<CafeService> cafeServiceList;
 
-//    @BeforeAll
-//    static void setUp() {
-//        final CafeService service = mock(CafeService.class);
-////        CafeRepository repository = Mockito.mock(CafeRepository.class);
-////        service = Mockito.mock(reposito);
-//        when(service.findAll()).thenReturn(new ArrayList<Cafe>());
-//    }
+    @BeforeAll
+    static void setUp() {
+        final CafeService service = mock(CafeService.class);
+        CafeRepository repository = Mockito.mock(CafeRepository.class);
+        service = Mockito.mock(repository);
+        when(service.findAll()).thenReturn(new ArrayList<Cafe>());
+    }
 
     @Test
     void findAllTest() {

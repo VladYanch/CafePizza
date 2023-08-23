@@ -60,8 +60,8 @@ public class CafeControllerTest {
     public void deleteCafeTest() throws Exception {
         Long cafeId = 1L;
 
-        mockMvc.perform(post("/cafes/delete")
-//        mockMvc.perform(post("/delete")
+//        mockMvc.perform(post("/cafes/delete")
+        mockMvc.perform(post("/delete")
                         .param("cafeId", String.valueOf(cafeId)))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/cafes"));
