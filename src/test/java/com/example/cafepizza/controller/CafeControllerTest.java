@@ -30,6 +30,7 @@ public class CafeControllerTest {
 
 //    @MockBean
 //    private MenuService menuService;
+
     @Autowired
     ObjectMapper objectMapper;
 
@@ -57,12 +58,43 @@ public class CafeControllerTest {
     }
 
     @Test
+    void addCafeTest() throws Exception {
+
+        mockMvc.perform(get("/cafes/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("cafes/cafe"))
+                .andExpect(model().attributeExists("cafe"));
+
+        verifyNoMoreInteractions(cafeService);
+    }
+
+    @Test
+    void createCafeTest() throws Exception {
+        Cafe cafe = new Cafe();
+        cafe.setId(4L);
+        cafe.setName("Pomodoro");
+        cafe.setCity("Odessa");
+        cafe.setAddress("Glushko");
+        cafe.setEmail("1@ua");
+        cafe.setPhone("+38 222 333");
+        cafe.setOpen("10:00");
+        cafe.setClose("22:00");
+
+        mockMvc.perform(post("/cafes/create")
+                .flashAttr("cafe", cafe))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/cafes"));
+
+        verify(cafeService, times(1)).addOrUpdate(cafe);
+        verifyNoMoreInteractions(cafeService);
+    }
+
+    @Test
     public void deleteCafeTest() throws Exception {
         Long cafeId = 1L;
 
-//        mockMvc.perform(post("/cafes/delete")
-        mockMvc.perform(post("/delete")
-                        .param("cafeId", String.valueOf(cafeId)))
+        mockMvc.perform(post("/cafes/delete")
+                        .param("id", String.valueOf(cafeId)))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/cafes"));
 
@@ -70,32 +102,36 @@ public class CafeControllerTest {
         verifyNoMoreInteractions(cafeService);
     }
 
-    @Test
-    public void testEditCafe() throws Exception {
-        Long cafeId = 1L;
-
-        mockMvc.perform(post("/cafes/edit")
-                        .param("cafeId", String.valueOf(cafeId)))
-//                        .param("cafeId", String.valueOf(cafeId)))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/cafes/editCafePage"));
-
-        verifyNoInteractions(cafeService);
-    }
-
 //    @Test
-//    void deleteCafe() {
-//    }
+//    public void editCafeTest() throws Exception {
+//        Long cafeId = 1L;
 //
-//    @Test
-//    void addCafe() {
-//    }
+//        mockMvc.perform(post("/cafes/edit")
+////        mockMvc.perform(post("/edit")
+//                .param("id", String.valueOf(cafeId)))
+//                .andExpect(status().isOk());
 //
-//    @Test
-//    void createCafe() {
-//    }
+////                .andExpect(status().is3xxRedirection())
+////                .andExpect(redirectedUrl("cafe"));
+////                .andExpect(redirectedUrl("cafes/cafe"));
+////                .andExpect(redirectedUrl("cafes/edit"));
+////                .andExpect(redirectedUrl("/cafes"));
 //
+//        verify(cafeService, times(1)).findById(cafeId);
+//        verifyNoInteractions(cafeService);
+//    }
+
 //    @Test
 //    void findCafe() {
+//        Long cafeId = 1L;
+//
+//        mockMvc.perform(post("/cafes/delete")
+//               .param("id", String.valueOf(cafeId)))
+//                .andExpect(status()
+//                .is3xxRedirection())
+//                .andExpect(redirectedUrl("/cafes"));
+//
+//        verify(cafeService, times(1)).findById(cafeId);
+//        verifyNoMoreInteractions(cafeService);
 //    }
 }

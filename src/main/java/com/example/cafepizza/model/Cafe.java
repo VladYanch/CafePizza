@@ -52,6 +52,6 @@ public class Cafe {
     private String close;
 
     @OneToMany(mappedBy = "cafe",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<Pizza> pizza_menu = new ArrayList<>();
+    List<Pizza> pizzaMenu = new ArrayList<>();
 
 }

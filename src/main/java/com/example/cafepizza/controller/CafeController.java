@@ -59,7 +59,7 @@ public class CafeController {
     public String showCafeWithMenu(@RequestParam ("id") Long id, Model model ) {
         Cafe cafeChoice = service.findById(id).get();
         model.addAttribute("cafe",cafeChoice);
-        model.addAttribute("pizzas",cafeChoice.getPizza_menu());
+        model.addAttribute("pizzas",cafeChoice.getPizzaMenu());
         return "cafes/menu";
     }
 }

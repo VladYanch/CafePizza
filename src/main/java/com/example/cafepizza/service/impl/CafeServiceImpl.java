@@ -14,11 +14,9 @@ import java.util.Optional;
 @Service
 public class CafeServiceImpl implements CafeService {
     private final CafeRepository cafeRepository;
-    private final PizzaRepository pizzaRepository;
     @Autowired
-    public CafeServiceImpl(CafeRepository cafeRepository, PizzaRepository pizzaRepository) {
+    public CafeServiceImpl(CafeRepository cafeRepository) {
         this.cafeRepository = cafeRepository;
-        this.pizzaRepository = pizzaRepository;
     }
 
     @Override
