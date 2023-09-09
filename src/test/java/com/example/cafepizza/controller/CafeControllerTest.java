@@ -1,6 +1,8 @@
 package com.example.cafepizza.controller;
 
+import com.example.cafepizza.PizzeriaData;
 import com.example.cafepizza.model.Cafe;
+import com.example.cafepizza.model.Pizza;
 import com.example.cafepizza.service.CafeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -29,7 +32,7 @@ public class CafeControllerTest {
     private CafeService cafeService;
 
 //    @MockBean
-//    private MenuService menuService;
+//    private PizzaService menuService;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -41,7 +44,7 @@ public class CafeControllerTest {
     }
 
     @Test
-    public void findAllTest() throws Exception {
+    public void indexTest() throws Exception {
         List<Cafe> cafes = new ArrayList<>();
         cafes.add(new Cafe());
 
@@ -56,7 +59,18 @@ public class CafeControllerTest {
         verify(cafeService, times(1)).findAll();
         verifyNoMoreInteractions(cafeService);
     }
+    @Test
+    public void deleteCafeTest() throws Exception {
+        Long cafeId = 1L;
 
+        mockMvc.perform(post("/cafes/delete")
+                .param("id", String.valueOf(cafeId)))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/cafes"));
+
+        verify(cafeService, times(1)).deleteCafe(cafeId);
+        verifyNoMoreInteractions(cafeService);
+    }
     @Test
     void addCafeTest() throws Exception {
 
@@ -67,18 +81,9 @@ public class CafeControllerTest {
 
         verifyNoMoreInteractions(cafeService);
     }
-
     @Test
     void createCafeTest() throws Exception {
-        Cafe cafe = new Cafe();
-        cafe.setId(4L);
-        cafe.setName("Pomodoro");
-        cafe.setCity("Odessa");
-        cafe.setAddress("Glushko");
-        cafe.setEmail("1@ua");
-        cafe.setPhone("+38 222 333");
-        cafe.setOpen("10:00");
-        cafe.setClose("22:00");
+        Cafe cafe = PizzeriaData.createCafe();
 
         mockMvc.perform(post("/cafes/create")
                 .flashAttr("cafe", cafe))
@@ -88,50 +93,44 @@ public class CafeControllerTest {
         verify(cafeService, times(1)).addOrUpdate(cafe);
         verifyNoMoreInteractions(cafeService);
     }
-
     @Test
-    public void deleteCafeTest() throws Exception {
-        Long cafeId = 1L;
+    void findCafeTest() throws Exception {
+        Cafe cafe = PizzeriaData.createCafe();
+        Long cafeId = cafe.getId();
 
-        mockMvc.perform(post("/cafes/delete")
-                        .param("id", String.valueOf(cafeId)))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/cafes"));
+        when(cafeService.findById(cafeId)).thenReturn(Optional.of(cafe));
 
-        verify(cafeService, times(1)).deleteCafe(cafeId);
+        mockMvc.perform(get("/cafes/edit")
+                .param("id", String.valueOf(cafeId)))
+                .andExpect(status().isOk())
+                .andExpect(view().name("cafes/cafe"))
+                .andExpect(model().attributeExists("cafe"))
+                .andExpect(model().attribute("cafe", cafe));
+
+        verify(cafeService, times(1)).findById(cafeId);
+        verifyNoMoreInteractions(cafeService);
+    }
+    @Test
+    public void showCafeWithMenuTest() throws Exception {
+        Cafe cafe = PizzeriaData.createCafe();
+        List<Pizza> menu = new ArrayList<>();
+        menu.add(mock(Pizza.class));
+        cafe.setPizzaMenu(menu);
+
+        when(cafeService.findById(cafe.getId())).thenReturn(Optional.of(cafe));
+
+        mockMvc.perform(get("/cafes/show")
+                .param("id", String.valueOf(cafe.getId())))
+                .andExpect(status().isOk())
+                .andExpect(view().name("cafes/menu"))
+                .andExpect(model().attributeExists("cafe"))
+                .andExpect(model().attribute("cafe", cafe))
+                .andExpect(model().attributeExists("pizzas"))
+                .andExpect(model().attribute("pizzas", menu));
+
+        verify(cafeService, times(1)).findById(cafe.getId());
         verifyNoMoreInteractions(cafeService);
     }
 
-//    @Test
-//    public void editCafeTest() throws Exception {
-//        Long cafeId = 1L;
-//
-//        mockMvc.perform(post("/cafes/edit")
-////        mockMvc.perform(post("/edit")
-//                .param("id", String.valueOf(cafeId)))
-//                .andExpect(status().isOk());
-//
-////                .andExpect(status().is3xxRedirection())
-////                .andExpect(redirectedUrl("cafe"));
-////                .andExpect(redirectedUrl("cafes/cafe"));
-////                .andExpect(redirectedUrl("cafes/edit"));
-////                .andExpect(redirectedUrl("/cafes"));
-//
-//        verify(cafeService, times(1)).findById(cafeId);
-//        verifyNoInteractions(cafeService);
-//    }
 
-//    @Test
-//    void findCafe() {
-//        Long cafeId = 1L;
-//
-//        mockMvc.perform(post("/cafes/delete")
-//               .param("id", String.valueOf(cafeId)))
-//                .andExpect(status()
-//                .is3xxRedirection())
-//                .andExpect(redirectedUrl("/cafes"));
-//
-//        verify(cafeService, times(1)).findById(cafeId);
-//        verifyNoMoreInteractions(cafeService);
-//    }
 }
