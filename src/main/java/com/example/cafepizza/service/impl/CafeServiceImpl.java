@@ -1,9 +1,8 @@
 package com.example.cafepizza.service.impl;
 
 import com.example.cafepizza.model.Cafe;
-import com.example.cafepizza.model.Pizza;
 import com.example.cafepizza.repository.CafeRepository;
-import com.example.cafepizza.repository.PizzaRepository;
+
 import com.example.cafepizza.service.CafeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
