@@ -102,8 +102,6 @@
 			</exclusions>
 		</dependency>
 
-
-
 		<!--	 Add Log4j2 Dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

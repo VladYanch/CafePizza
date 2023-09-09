@@ -1,46 +1,43 @@
-//package com.example.cafepizza.service;
+package com.example.cafepizza.service;
 
+import com.example.cafepizza.PizzeriaData;
 import com.example.cafepizza.model.Cafe;
-import com.example.cafepizza.repository.CafeRepository;
-import com.example.cafepizza.service.impl.CafeServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
-//class CafeServiceTest {
-//    private static CafeService service;
-//    private static CafeRepository cafeRepository;
-//    private final List<CafeService> cafeServiceList;
-
-//    @BeforeAll
-//    static void setUp() {
-//        final CafeService service = mock(CafeService.class);
-//        CafeRepository repository = Mockito.mock(CafeRepository.class);
-//        service = Mockito.mock(repository);
-//        when(service.findAll()).thenReturn(new ArrayList<Cafe>());
-//    }
-
-//    @Test
-//    void findAllTest() {
-//        assertEquals(3, service.findAll().size());
-//    }
-
-//    @Test
-//    void deleteCafe() {
-//    }
-//
-//    @Test
-//    void findById() {
-//    }
-//
-//    @Test
-//    void addOrUpdate() {
-//    }
-//}
+class CafeServiceTest {
+    private static CafeService service;
+    @BeforeAll
+    static void setUp() {
+        service = mock(CafeService.class);
+        ArrayList<Cafe> cafeList = new ArrayList<>();
+        Cafe cafe = PizzeriaData.createCafe();
+        cafeList.add(cafe);
+        when(service.findAll()).thenReturn(cafeList);
+        when(service.findById(1L)).thenReturn(Optional.of(cafe));
+    }
+    @Test
+    void findAllTest() {
+        assertEquals(1, service.findAll().size());
+    }
+    @Test
+    void deleteCafe() {
+        service.deleteCafe(1L);
+        assertEquals(1, service.findAll().size());
+    }
+    @Test
+    void findById() {
+        assertEquals("Pomodoro", service.findById(1L).get().getName());
+    }
+    @Test
+    void addOrUpdate() {
+        Cafe cafe1 = service.findById(1L).get();
+        cafe1.setId(2L);
+        assertTrue(cafe1.getId() == 2L);
+        service.addOrUpdate(cafe1);
+        assertFalse(service.findById(2L).isPresent());
+    }
+}
