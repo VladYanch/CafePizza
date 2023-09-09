@@ -31,12 +31,8 @@ public class CafeControllerTest {
     @MockBean
     private CafeService cafeService;
 
-//    @MockBean
-//    private PizzaService menuService;
-
     @Autowired
     ObjectMapper objectMapper;
-
 
     @BeforeEach
     public void setup() {
@@ -131,6 +127,4 @@ public class CafeControllerTest {
         verify(cafeService, times(1)).findById(cafe.getId());
         verifyNoMoreInteractions(cafeService);
     }
-
-
 }
