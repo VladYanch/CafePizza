@@ -53,5 +53,4 @@ public class Cafe {
 
     @OneToMany(mappedBy = "cafe",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Pizza> pizzaMenu = new ArrayList<>();
-
 }

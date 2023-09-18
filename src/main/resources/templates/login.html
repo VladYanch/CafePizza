@@ -8,6 +8,7 @@
 </head>
 <body>
 <header class="header">
+    
     <div class="container header-container">
         <a href="" class="header-logo link">Cafe<span class="logo-accent">Pizza</span></a>
         <nav class="header-nav">
@@ -22,15 +23,12 @@
     <div class="login">
         <div class="header-item"><a th:href="@{/login}" class="login">Login</a></div>
     </div>
-
 </header>
 
 <main>
     <section class="hero">
-
         <div class="login_title" th:inline="text">Hello,
             <span th:remove="tag" sec:authentication="name"></span>!</div>
-
 
         <form style="text-align: center" th:action="@{login}" method="post">
         <h3 style="font-size: 36px; color: yellow; margin-top: 40px; margin-bottom: 15px" >Login</h3>

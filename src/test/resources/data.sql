@@ -16,7 +16,7 @@ values ('Pizza Romano', 'Standard', 6.70, 'Tomato sauce, mozzarella, rosemary, s
 
 
 -- 1
-insert into user (username, password, role)
+insert into users (username, password, role)
 values ('admin','$2a$10$noBvg9RMquV2dx2fUtdd3OHUYPVuQlklMJrbkQWtvp9uYP26hkuzm','ROLE_ADMIN'),
        ('user','$2a$10$noBvg9RMquV2dx2fUtdd3OHUYPVuQlklMJrbkQWtvp9uYP26hkuzm','ROLE_USER');
 

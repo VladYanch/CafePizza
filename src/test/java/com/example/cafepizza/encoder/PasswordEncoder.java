@@ -2,7 +2,7 @@ package com.example.cafepizza.encoder;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public class passwordEncoder {
+public class PasswordEncoder {
     public static void main(String[] args) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         System.out.println(encoder.encode("1"));
