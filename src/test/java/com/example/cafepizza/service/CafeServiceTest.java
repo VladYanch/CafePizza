@@ -2,42 +2,70 @@ package com.example.cafepizza.service;
 
 import com.example.cafepizza.PizzeriaData;
 import com.example.cafepizza.model.Cafe;
+import com.example.cafepizza.repository.CafeRepository;
+import com.example.cafepizza.service.impl.CafeServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.stubbing.OngoingStubbing;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 class CafeServiceTest {
-    private static CafeService service;
-    @BeforeAll
-    static void setUp() {
-        service = mock(CafeService.class);
-        ArrayList<Cafe> cafeList = new ArrayList<>();
+    @Mock
+    private CafeRepository repository;
+    private CafeServiceImpl service;
+    private static List<Cafe> cafes;
+    private static Cafe cafe;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        service = new CafeServiceImpl(repository);
         Cafe cafe = PizzeriaData.createCafe();
-        cafeList.add(cafe);
-        when(service.findAll()).thenReturn(cafeList);
-        when(service.findById(1L)).thenReturn(Optional.of(cafe));
+
+        Cafe cafe2 = new Cafe();
+        cafe2.setId(2L);
+        cafe2.setName("Milano im Westend");
+        cafe2.setCity("Munster");
+        cafe2.setAddress("Wilhelmstr. 26");
+        cafe2.setPhone("+49 0251 25962555");
+        cafe2.setEmail("mail@milano-westend.de");
+        cafe2.setOpen("09-00");
+        cafe2.setClose("21-00");
+
+        cafes = Arrays.asList(cafe, cafe2);
     }
     @Test
-    void findAllTest() {
-        assertEquals(1, service.findAll().size());
+    void findAllCafesTest() {
+        when(repository.findAll()).thenReturn(cafes);
+        List<Cafe> result = service.findAll();
+        assertEquals(cafes, result);
+        verify(repository, times(1)).findAll();
     }
     @Test
-    void deleteCafe() {
+    void deleteCafeTest() {
         service.deleteCafe(1L);
-        assertEquals(1, service.findAll().size());
+        verify(repository, times(1)).deleteById(1L);
     }
     @Test
-    void findById() {
+    void findByIdTest() {
+        Cafe cafe = PizzeriaData.createCafe();
+        when(repository.findById(1L)).thenReturn(Optional.of(cafe));
         assertEquals("Pomodoro", service.findById(1L).get().getName());
     }
     @Test
     void addOrUpdate() {
-        Cafe cafe1 = service.findById(1L).get();
-        cafe1.setId(2L);
-        assertTrue(cafe1.getId() == 2L);
-        service.addOrUpdate(cafe1);
-        assertFalse(service.findById(2L).isPresent());
+        Cafe cafe = PizzeriaData.createCafe();
+        cafe.setId(2L);
+        assertTrue(cafe.getId() == 2L);
+        service.addOrUpdate(cafe);
+        verify(repository, times(1)).save(cafe);
     }
 }

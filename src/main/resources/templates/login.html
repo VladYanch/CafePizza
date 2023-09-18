@@ -21,7 +21,7 @@
     </div>
 
     <div class="login">
-        <div class="header-item"><a th:href="@{/login}" class="login">Login</a></div>
+        <div class="header-item"><a th:href="@{/login}" class="login">🔑</a></div>
     </div>
 </header>
 
@@ -43,6 +43,9 @@
                 <div>
                     <form th:action="@{/logout}" method="post">
                         <input type="submit" value="Logout" class="login_btn"/>
+<!--                        <div th:if="${param.logout}">-->
+<!--                            You have been logged out.-->
+<!--                        </div>-->
                     </form>
                 </div>
             </div>
