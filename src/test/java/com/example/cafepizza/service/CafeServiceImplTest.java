@@ -4,20 +4,17 @@ import com.example.cafepizza.PizzeriaData;
 import com.example.cafepizza.model.Cafe;
 import com.example.cafepizza.repository.CafeRepository;
 import com.example.cafepizza.service.impl.CafeServiceImpl;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.OngoingStubbing;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-class CafeServiceTest {
+class CafeServiceImplTest {
     @Mock
     private CafeRepository repository;
     private CafeServiceImpl service;
