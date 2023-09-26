@@ -20,7 +20,7 @@ public class CafeServiceImpl implements CafeService {
 
     @Override
     public List<Cafe> findAll() {
-        return cafeRepository.findAll();
+        return (List<Cafe>) cafeRepository.findAll();
     }
     public void deleteCafe(Long id) { cafeRepository.deleteById(id);}
     public Optional<Cafe> findById(Long id) {
