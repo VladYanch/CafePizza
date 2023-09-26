@@ -35,6 +35,7 @@ public class CafeController {
         attributes.addFlashAttribute("deleted", id);
         return "redirect:/cafes";
     }
+
     @GetMapping(value = "/new")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addCafe(@ModelAttribute ("cafe") Cafe cafe) { return "cafes/cafe";}
@@ -46,6 +47,7 @@ public class CafeController {
         service.addOrUpdate(cafe);
         return "redirect:/cafes";
     }
+
     @GetMapping(value = "/edit")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String findCafe(@RequestParam ("id") Long id, Model model ) {
