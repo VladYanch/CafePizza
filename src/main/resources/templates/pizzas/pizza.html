@@ -45,8 +45,8 @@
     <input class="input_pizza" th:field="*{size}" id="size"/><br/>
     <div class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></div>
     <label for="key_ingredients">Ingredients</label>
-    <input class="input_pizza" th:field="*{key_ingredients}" id="key_ingredients"/><br/>
-    <div class="error" th:if="${#fields.hasErrors('key_ingredients')}" th:errors="*{key_ingredients}"></div>
+    <input class="input_pizza" th:field="*{keyIngredients}" id="key_ngredients"/><br/>
+    <div class="error" th:if="${#fields.hasErrors('keyIngredients')}" th:errors="*{keyIngredients}"></div>
     <label for="price">Price</label>
     <input class="input_pizza" th:field="*{price}" id="price"/><br/>
     <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
