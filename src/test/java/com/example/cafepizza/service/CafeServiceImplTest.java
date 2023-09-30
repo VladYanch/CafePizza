@@ -10,9 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MvcResult;
 
-import java.lang.annotation.Retention;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -20,43 +18,40 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 @SpringBootTest
 class CafeServiceImplTest {
-//    @Mock
-    
-    @Autowired
+    @Mock
     private CafeRepository repository;
-    
+
     @Autowired
     private CafeServiceImpl service;
     private static List<Cafe> cafes;
-    
+
     @Autowired
     private static Cafe cafe;
 
-//    @BeforeEach
-//    void setUp() {
-//        MockitoAnnotations.openMocks(this);
-//        service = new CafeServiceImpl(repository);
-//        Cafe cafe = PizzeriaData.createCafe();
-//
-//        Cafe cafe2 = new Cafe();
-//        cafe2.setId(2L);
-//        cafe2.setName("Milano im Westend");
-//        cafe2.setCity("Munster");
-//        cafe2.setAddress("Wilhelmstr. 26");
-//        cafe2.setPhone("+49 0251 25962555");
-//        cafe2.setEmail("mail@milano-westend.de");
-//        cafe2.setOpen("09-00");
-//        cafe2.setClose("21-00");
-//
-//        cafes = Arrays.asList(cafe, cafe2);
-//    }
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        service = new CafeServiceImpl(repository);
+        Cafe cafe = PizzeriaData.createCafe();
+
+        Cafe cafe2 = new Cafe();
+        cafe2.setId(2L);
+        cafe2.setName("Milano im Westend");
+        cafe2.setCity("Munster");
+        cafe2.setAddress("Wilhelmstr. 26");
+        cafe2.setPhone("+49 0251 25962555");
+        cafe2.setEmail("mail@milano-westend.de");
+        cafe2.setOpen("09-00");
+        cafe2.setClose("21-00");
+
+        cafes = Arrays.asList(cafe, cafe2);
+    }
     @Test
     void findAllCafesTest() {
-//        when(repository.findAll()).thenReturn(cafes);
-        int size = repository.findAll().size();
+        when(repository.findAll()).thenReturn(cafes);
         List<Cafe> result = service.findAll();
-        assertEquals(size, result.size());
-//        verify(repository, times(1)).findAll();
+        assertEquals(cafes.size(), result.size());
+        verify(repository, times(1)).findAll();
     }
     @Test
     void deleteCafeTest() {
@@ -65,10 +60,9 @@ class CafeServiceImplTest {
     }
     @Test
     void findByIdTest() {
-//        Cafe cafe = PizzeriaData.createCafe();
-//        when(repository.findById(1L)).thenReturn(Optional.of(cafe));
-//        repository.findById(1L))
-        assertEquals("Losteria Dortmund", service.findById(1L).get().getName());
+        Cafe cafe = PizzeriaData.createCafe();
+        when(repository.findById(1L)).thenReturn(Optional.of(cafe));
+        assertEquals("Pomodoro", service.findById(1L).get().getName());
     }
     @Test
     void addOrUpdate() {
