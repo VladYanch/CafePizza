@@ -34,6 +34,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .logout((logout) -> logout.logoutUrl("/logout").permitAll()
+                .logoutSuccessUrl("/login"))
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/",
                                 "/style.css",
@@ -41,17 +43,17 @@ public class SecurityConfig {
                                 "/error",
                                 "/pizzas",
                                 "/cafes",
+                                "/swagger-ui/**",
                                 "/menu")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
-//                        .requestMatchers("/").anonymous()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
-                )
-                .logout((logout) -> logout.permitAll());
+                );
+
         return http.build();
     }
 }

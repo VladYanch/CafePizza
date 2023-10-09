@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="http://www.w3.org/1999/xhtml">
-<!--            xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">-->
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="/style.css"/>
@@ -29,24 +28,20 @@
     <section class="hero">
         <div class="login_title" th:inline="text">Hello,
             <span th:remove="tag" sec:authentication="name"></span>!</div>
+        <div  style="font-size: 24px; text-align: center; color: coral; margin-top: 20px" th:inline="text">user and admin password = 1</div>
 
         <form style="text-align: center" th:action="@{login}" method="post">
-        <h3 style="font-size: 36px; color: yellow; margin-top: 40px; margin-bottom: 15px" >Login</h3>
+            <h3 style="font-size: 36px; color: yellow; margin-top: 30px; margin-bottom: 15px" >Login</h3>
             <div class="login_body">
                 <div class="login_input">
                     <label> User Name : <input type="text" name="username" class="input_pizza"/> </label>
                     <label> Password: <input type="password" name="password" class="input_pizza"/> </label>
                 </div>
             </div>
-            <div style="display: flex; gap: 40px; justify-content: center">
+            <div style="display: flex; align-items: center; gap: 40px; justify-content: center">
                 <div><input class="login_btn" type="submit" value="Login"/></div>
                 <div>
-                    <form th:action="@{/logout}" method="post">
-                        <input type="submit" value="Logout" class="login_btn"/>
-<!--                        <div th:if="${param.logout}">-->
-<!--                            You have been logged out.-->
-<!--                        </div>-->
-                    </form>
+                    <input th:formaction="@{/logout}" formmethod="post" class="login_btn" type="submit" value="Logout"/>
                 </div>
             </div>
         </form>
