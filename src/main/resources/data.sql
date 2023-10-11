@@ -9,10 +9,10 @@ values ('Pizza Romano', 'Standard', 6.70, 'Tomato sauce, mozzarella, rosemary, s
        ('Pizza Peperoni', 'Standard', 7.65, 'Tomato sauce, pepperoni, ricotta',3, '/img/peperoni.jpeg'),
        ('Pizza Hawaii', 'Family', 13.80, 'Tomato sauce, bacon, mozzarella, pineapple',1,'/img/hawaii.jpeg'),
        ('Pizza Di Mare', 'Large', 8.30, 'Tomato sauce, mussels, mozzarella, onions',2,'/img/dimare.jpeg'),
-       ('Pizza Blanka Meat', 'Large', 9.29, 'Tomato sauce, veal, ham, onions, mushrooms',3,'/img/biankameat.jpeg'),
+       ('Pizza Blanka Meat', 'Large', 9.29, 'Tomato sauce, veal, ham, onions, mushrooms',3,'/img/bianka_meat.jpeg'),
        ('Pizza Tsezar', 'XL', 8.80, 'Tomato sauce, Eggs, mozzarella, salat',1,'/img/tsezar.jpeg'),
        ('Pizza Siciliano', 'XL', 7.20, 'Tomato sauce, Tomato, mozzarella, onions, basil',2,'/img/siciliano.jpeg'),
-       ('Pizza Meat Confugi', 'Family', 14.00, 'Tomato sauce, veal, ham, onions, mushrooms',3,'/img/meatconfugi.jpeg');
+       ('Pizza Meat Confugi', 'Family', 14.00, 'Tomato sauce, veal, ham, onions, mushrooms',3,'/img/meat_confugi.jpeg');
 
 
 -- 1
